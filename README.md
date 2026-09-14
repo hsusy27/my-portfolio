@@ -1,15 +1,18 @@
 # My Personal Portfolio & CV
 
-這是一個為資管所推甄與求職設計的韓系簡約風格個人網站，採用丈青色與藍白配色。
+這是一個為資管所推甄與求職設計的韓系簡約風格個人網站。
+
+## 版本更新 (v3)
+- 將「關於我」與「學歷與經歷」拆分為兩個獨立區塊。
+- 新增了履歷時間軸 (Timeline) 的樣式設計。
+- 專案作品改為可點擊卡片，點擊後會在「新分頁」開啟對應的獨立專案細節頁面 (`project-1.html`, `project-2.html`)。
 
 ## 專案架構
-- `index.html`: 網站首頁與主要內容
-- `assets/css/style.css`: 視覺與排版樣式
-- `assets/js/main.js`: 滾動動畫與互動效果
-- `assets/img/`: 用於存放個人頭像與作品截圖
+- `index.html`: 網站首頁
+- `project-1.html`: 專案一詳細頁面
+- `project-2.html`: 專案二詳細頁面
+- `assets/css/style.css`: 樣式設定 (包含新增的時間軸樣式)
+- `assets/js/main.js`: 互動動畫
 
-## 如何部署至 GitHub Pages
-1. 將解壓縮後的所有檔案與資料夾推播 (push) 至你的 GitHub Repository。
-2. 進入該 Repository 的 **Settings** > **Pages**。
-3. 將 Source 設為 `main` (或 `master`) 分支的 `/ (root)`。
-4. 儲存後，等待幾分鐘即可獲得你的專屬網址，可以直接附在推甄備審資料中！
+## 部署
+直接將解壓縮後的整個資料夾推上 GitHub，並在 Settings > Pages 中開啟部署即可！

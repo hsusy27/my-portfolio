@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的作品集 | 履歷</title>
-    <!-- 引入自定義的 CSS 樣式 -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- 引入 Google 字體 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,6 +14,7 @@
             <a href="#" class="logo">Portfolio.</a>
             <ul class="nav-links">
                 <li><a href="#about">關於我</a></li>
+                <li><a href="#resume">學經歷</a></li>
                 <li><a href="#skills">專業技能</a></li>
                 <li><a href="#projects">專案作品</a></li>
                 <li><a href="#contact">聯絡方式</a></li>
@@ -34,22 +33,86 @@
         </div>
     </header>
 
-    <!-- 關於我與學歷 -->
+    <!-- 關於我 -->
     <section class="section" id="about">
         <div class="container">
-            <h2 class="section-title">關於我 & 學歷</h2>
-            <div class="about-grid">
-                <div class="about-text fade-in">
-                    <p>您好！我擁有醫務管理背景，並在中國醫藥大學附設醫院人工智慧中心累積了四年的實務經驗。在協助推動各項專案與國際交流的過程中，我深感資訊管理與自動化流程的重要性。</p>
-                    <br>
-                    <p>平時我積極進修 Python、SQL 等數據科學工具，並熟悉 React 與 Tailwind CSS 進行網頁前端開發。期望能將過去的跨領域專案管理經驗帶入資訊管理研究所的學習中，持續探索人機互動與系統管理的可能性。</p>
-                </div>
-                <div class="education fade-in">
-                    <div class="timeline-item">
-                        <h3>醫務管理學系 學士</h3>
-                        <p class="date">已畢業</p>
-                        <p>OO大學</p>
+            <h2 class="section-title">關於我</h2>
+            <div class="about-content fade-in" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p>您好！我擁有醫務管理背景，並在中國醫藥大學附設醫院人工智慧中心累積了四年的實務經驗。在協助推動各項專案與國際交流的過程中，我深感資訊管理與自動化流程的重要性。</p>
+                <br>
+                <p>平時我積極進修 Python、SQL 等數據科學工具，並熟悉 React 與 Tailwind CSS 進行網頁前端開發。期望能將過去的跨領域專案管理經驗帶入資訊管理研究所的學習中，持續探索人機互動與系統管理的可能性。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 學經歷 (Resume) -->
+    <section class="section bg-light" id="resume">
+        <div class="container">
+            <h2 class="section-title">學歷與經歷</h2>
+            <div class="resume-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+                
+                <!-- 經歷 -->
+                <div class="resume-column fade-in">
+                    <h3 style="color: var(--primary-navy); margin-bottom: 2rem; font-size: 1.5rem;">Experience</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <p class="date">2022 - 至今 (4年)</p>
+                            <h4>行政人員</h4>
+                            <p class="institution">中國醫藥大學附設醫院 人工智慧中心</p>
+                            <p class="details" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">協助推動 AI 創新應用競賽、管理專案預算編列、安排國際參訪交流 (如 Samsung Medical Center)，以及優化辦公室內部系統流程與人員報到審核。</p>
+                        </div>
+                        <!-- 可以繼續新增經歷 -->
                     </div>
+                </div>
+
+                <!-- 學歷 -->
+                <div class="resume-column fade-in">
+                    <h3 style="color: var(--primary-navy); margin-bottom: 2rem; font-size: 1.5rem;">Education</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <p class="date">已畢業</p>
+                            <h4>醫務管理學系 學士</h4>
+                            <p class="institution">OO大學</p>
+                            <p class="details" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">具備醫療體系運作與行政管理基礎，培養了扎實的邏輯思考與跨領域溝通能力。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 專業技能區塊 -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">專業技能</h2>
+            <div class="skills-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="skill-category fade-in" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+                    <h3 style="color: var(--primary-navy); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">數據分析與資料庫</h3>
+                    <ul style="list-style-type: none; line-height: 2; color: var(--text-muted);">
+                        <li>🔹 Python (Pandas, 數據清理)</li>
+                        <li>🔹 SQL / SQLite / DBeaver</li>
+                        <li>🔹 雲端數據基礎 (準備微軟 DP-900)</li>
+                        <li>🔹 量化分析與問卷處理</li>
+                    </ul>
+                </div>
+                <div class="skill-category fade-in" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+                    <h3 style="color: var(--primary-navy); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">前端開發與設計</h3>
+                    <ul style="list-style-type: none; line-height: 2; color: var(--text-muted);">
+                        <li>🔹 HTML / CSS / JavaScript</li>
+                        <li>🔹 React & Tailwind CSS</li>
+                        <li>🔹 Figma UI/UX 介面設計</li>
+                        <li>🔹 響應式網頁設計 (RWD)</li>
+                    </ul>
+                </div>
+                <div class="skill-category fade-in" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+                    <h3 style="color: var(--primary-navy); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">專案與行政管理</h3>
+                    <ul style="list-style-type: none; line-height: 2; color: var(--text-muted);">
+                        <li>🔹 跨部門溝通與時程控管</li>
+                        <li>🔹 專案預算與預算編列</li>
+                        <li>🔹 國際交流與參訪安排</li>
+                        <li>🔹 辦公室系統與流程優化</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -59,29 +122,39 @@
     <section class="section bg-light" id="projects">
         <div class="container">
             <h2 class="section-title">精選專案與研究</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: var(--text-muted);">點擊卡片查看詳細內容</p>
             <div class="project-grid">
-                <!-- 專案 1 -->
-                <div class="project-card fade-in">
-                    <div class="project-img-placeholder">圖片 1 (建議放入網站介面截圖)</div>
-                    <div class="project-info">
-                        <h3>中心報到與資格審查系統</h3>
-                        <p>獨立規劃並開發中心內部使用的報到與資格審核應用程式。從 Figma 介面設計到本地端部署，提供團隊直覺流暢的操作體驗。</p>
-                        <span class="tag">React</span>
-                        <span class="tag">Tailwind CSS</span>
-                        <span class="tag">Figma</span>
+                <!-- 專案 1 (改為可點擊的連結) -->
+                <a href="project-1.html" target="_blank" class="project-card-link fade-in">
+                    <div class="project-card" style="background: var(--bg-white);">
+                        <div class="project-img-placeholder">圖片 1 (建議放入網站介面截圖)</div>
+                        <div class="project-info">
+                            <h3>中心報到與資格審查系統</h3>
+                            <p>獨立規劃並開發中心內部使用的報到與資格審核應用程式。從 Figma 介面設計到本地端部署，提供團隊直覺流暢的操作體驗。</p>
+                            <div class="tags-container" style="margin-top: 1rem;">
+                                <span class="tag" style="background-color: var(--bg-light);">React</span>
+                                <span class="tag" style="background-color: var(--bg-light);">Tailwind CSS</span>
+                                <span class="tag" style="background-color: var(--bg-light);">Figma</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- 專案 2 -->
-                <div class="project-card fade-in">
-                    <div class="project-img-placeholder">圖片 2 (建議放入圖表截圖)</div>
-                    <div class="project-info">
-                        <h3>人機互動與使用者依賴度研究</h3>
-                        <p>利用 Python 進行問卷數據清理與量化分析，探討使用者在面對 AI 輔助時的互動模式與依賴效應，並以此架構學術研究計畫。</p>
-                        <span class="tag">Python</span>
-                        <span class="tag">Data Analysis</span>
-                        <span class="tag">Research</span>
+                </a>
+                
+                <!-- 專案 2 (改為可點擊的連結) -->
+                <a href="project-2.html" target="_blank" class="project-card-link fade-in">
+                    <div class="project-card" style="background: var(--bg-white);">
+                        <div class="project-img-placeholder">圖片 2 (建議放入圖表截圖)</div>
+                        <div class="project-info">
+                            <h3>人機互動與使用者依賴度研究</h3>
+                            <p>利用 Python 進行問卷數據清理與量化分析，探討使用者在面對 AI 輔助時的互動模式與依賴效應，並以此架構學術研究計畫。</p>
+                            <div class="tags-container" style="margin-top: 1rem;">
+                                <span class="tag" style="background-color: var(--bg-light);">Python</span>
+                                <span class="tag" style="background-color: var(--bg-light);">Data Analysis</span>
+                                <span class="tag" style="background-color: var(--bg-light);">Research</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -99,7 +172,6 @@
         <p>&copy; 2026 你的名字. All Rights Reserved.</p>
     </footer>
 
-    <!-- 引入互動腳本 -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
