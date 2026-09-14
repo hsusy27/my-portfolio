@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的作品集 | 履歷</title>
+    <!-- 引入自定義的 CSS 樣式 -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- 引入 Google 字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 導覽列 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Portfolio.</a>
+            <ul class="nav-links">
+                <li><a href="#about">關於我</a></li>
+                <li><a href="#skills">專業技能</a></li>
+                <li><a href="#projects">專案作品</a></li>
+                <li><a href="#contact">聯絡方式</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首頁橫幅 -->
+    <header class="hero" id="home">
+        <div class="hero-content fade-in">
+            <p class="subtitle">Hello, I'm</p>
+            <h1>你的名字</h1>
+            <h2 class="role">Front-End Developer & Data Enthusiast</h2>
+            <p class="description">具備醫療人工智慧領域行政與專案管理經驗，專注於透過 Python 處理數據，並以直覺的介面呈現。歡迎來到我的資管所推甄與求職作品集。</p>
+            <a href="#projects" class="btn-primary">查看作品</a>
+        </div>
+    </header>
+
+    <!-- 關於我與學歷 -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">關於我 & 學歷</h2>
+            <div class="about-grid">
+                <div class="about-text fade-in">
+                    <p>您好！我擁有醫務管理背景，並在中國醫藥大學附設醫院人工智慧中心累積了四年的實務經驗。在協助推動各項專案與國際交流的過程中，我深感資訊管理與自動化流程的重要性。</p>
+                    <br>
+                    <p>平時我積極進修 Python、SQL 等數據科學工具，並熟悉 React 與 Tailwind CSS 進行網頁前端開發。期望能將過去的跨領域專案管理經驗帶入資訊管理研究所的學習中，持續探索人機互動與系統管理的可能性。</p>
+                </div>
+                <div class="education fade-in">
+                    <div class="timeline-item">
+                        <h3>醫務管理學系 學士</h3>
+                        <p class="date">已畢業</p>
+                        <p>OO大學</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集區塊 -->
+    <section class="section bg-light" id="projects">
+        <div class="container">
+            <h2 class="section-title">精選專案與研究</h2>
+            <div class="project-grid">
+                <!-- 專案 1 -->
+                <div class="project-card fade-in">
+                    <div class="project-img-placeholder">圖片 1 (建議放入網站介面截圖)</div>
+                    <div class="project-info">
+                        <h3>中心報到與資格審查系統</h3>
+                        <p>獨立規劃並開發中心內部使用的報到與資格審核應用程式。從 Figma 介面設計到本地端部署，提供團隊直覺流暢的操作體驗。</p>
+                        <span class="tag">React</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">Figma</span>
+                    </div>
+                </div>
+                <!-- 專案 2 -->
+                <div class="project-card fade-in">
+                    <div class="project-img-placeholder">圖片 2 (建議放入圖表截圖)</div>
+                    <div class="project-info">
+                        <h3>人機互動與使用者依賴度研究</h3>
+                        <p>利用 Python 進行問卷數據清理與量化分析，探討使用者在面對 AI 輔助時的互動模式與依賴效應，並以此架構學術研究計畫。</p>
+                        <span class="tag">Python</span>
+                        <span class="tag">Data Analysis</span>
+                        <span class="tag">Research</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡方式 -->
+    <section class="section" id="contact">
+        <div class="container contact-container fade-in">
+            <h2 class="section-title">聯絡我</h2>
+            <p>如果您對我的經歷與推甄計畫感興趣，或是想進一步討論，歡迎隨時與我聯繫！</p>
+            <a href="mailto:your.email@example.com" class="btn-primary">發送 Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 你的名字. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 引入互動腳本 -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
