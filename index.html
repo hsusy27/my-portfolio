@@ -28,7 +28,7 @@
     <header class="hero" id="home">
         <div class="hero-content fade-in">
             <p class="subtitle">Hello, I'm</p>
-            <h1>你的名字</h1>
+            <h1>徐詩媛</h1>
             <h2 class="role">Front-End Developer & Data Enthusiast</h2>
             <p class="description">具備醫療人工智慧領域行政與專案管理經驗，專注於透過 Python 處理數據，並以直覺的介面呈現。歡迎來到我的資管所推甄與求職作品集。</p>
             <a href="#projects" class="btn-primary">查看作品</a>
@@ -40,7 +40,7 @@
         <div class="container">
             <h2 class="section-title">關於我</h2>
             <div class="about-content fade-in" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p>您好！我畢業於醫務管理學系，並在中國醫藥大學附設醫院人工智慧中心累積了四年的實務經驗。在協助推動各項專案與國際交流的過程中，我深感資訊管理與自動化流程的重要性。</p>
+                <p>您好！我畢業於醫務管理學系，並在中國醫藥大學附設醫院人工智慧暨機器人創新中心累積四年的實務經驗。在協助推動各項專案與國際交流的過程中，我深感資訊管理與自動化流程的重要性。</p>
                 <br>
                 <p>平時我積極進修 Python、SQL 等數據科學工具，並熟悉 React 與 Tailwind CSS 進行網頁前端開發。期望能將過去的跨領域行政管理經驗帶入資訊管理研究所的學習中，持續探索人機互動與系統管理的可能性。</p>
             </div>
@@ -162,6 +162,15 @@
                     </div>
                 </div>
 
+                 <div class="cert-card fade-in" onclick="openModal('cert-modal-5')" style="background: var(--bg-white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; transition: transform 0.3s;">
+                    <i class="fa-solid fa-language" style="font-size: 2rem; color: var(--primary-light);"></i>
+                    <div>
+                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">其他</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">積極準備中，用於國際醫療交流與原文書閱讀</p>
+                        <span class="tag" style="margin-top: 0.5rem; display: inline-block;">點擊看證書照片</span>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -255,11 +264,11 @@
             <div class="wix-contact-row">
                 <div class="wix-contact-col">
                     <h3>Call</h3>
-                    <p><a href="tel:+886912345678">123-456-7890</a></p>
+                    <p><a href="tel:+886963919267">0963-919-267</a></p>
                 </div>
                 <div class="wix-contact-col">
                     <h3>Write</h3>
-                    <p><a href="mailto:info@mysite.com">info@mysite.com</a></p>
+                    <p><a href="mailto:hsu.s.y527@gmail.com">hsu.s.y527@gmail.com</a></p>
                 </div>
                 <div class="wix-contact-col">
                     <h3>Follow</h3>
@@ -275,7 +284,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 你的名字. All Rights Reserved.</p>
+        <p>&copy; 2026 hsu.s.y. </p>
     </footer>
 
     <!-- ================= 證照彈出視窗 (Cert Modals) ================= -->
@@ -351,6 +360,25 @@
                 <div class="cert-photo-gallery">
                     <div class="cert-img-box">
                         <div class="modal-img">放置 TOEIC 報名單或模擬測驗成績單截圖</div>
+                    </div>
+                </div>
+                <h4>英語能力精進目標</h4>
+                <p>因應醫院國際醫療交流（如與 Samsung Medical Center 專家學者交流）以及閱讀英文資管文獻、GitHub 開源文件之需求，持續提升聽說讀寫能力。</p>
+            </div>
+        </div>
+    </div>
+
+        <div id="cert-modal-5" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('cert-modal-4')"><i class="fa-solid fa-xmark"></i></span>
+            <div class="modal-header">
+                <h2>其他</h2>
+                <p>其他進修</p>
+            </div>
+            <div class="modal-body">
+                <div class="cert-photo-gallery">
+                    <div class="cert-img-box">
+                        <div class="modal-img">放置 證照截圖</div>
                     </div>
                 </div>
                 <h4>英語能力精進目標</h4>
