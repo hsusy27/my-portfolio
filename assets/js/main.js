@@ -50,3 +50,18 @@ function closeModal(modalId) {
     // 恢復背景滾動
     document.body.classList.remove('modal-open');
 }
+
+// 切換 Modal 放大/全螢幕
+function toggleExpand(button) {
+    const modalContent = button.closest('.modal-content');
+    modalContent.classList.toggle('fullscreen');
+    
+    const icon = button.querySelector('i');
+    if (modalContent.classList.contains('fullscreen')) {
+        icon.classList.remove('fa-expand');
+        icon.classList.add('fa-compress');
+    } else {
+        icon.classList.remove('fa-compress');
+        icon.classList.add('fa-expand');
+    }
+}
