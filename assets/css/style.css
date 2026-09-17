@@ -211,124 +211,25 @@ body.modal-open { overflow: hidden; }
     transition: all 0.2s ease;
 }
 
-/* Wix 風格 Call / Write / Follow 聯絡我樣式 */
-.wix-contact-row {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 3rem;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
+/* 彈出視窗放大/全螢幕模式 */
+.modal-content.fullscreen {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    padding: 3rem 4rem !important;
 }
-
-.wix-contact-col h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--primary-navy);
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.5px;
+.expand-btn {
+    position: absolute; 
+    top: 1.5rem; 
+    right: 3.5rem; /* 放在關閉按鈕左側 */
+    font-size: 1.2rem; 
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    cursor: pointer; 
+    transition: color 0.2s;
 }
-
-.wix-contact-col p, .wix-contact-col a {
-    color: var(--text-main);
-    font-size: 1.05rem;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.wix-contact-col a:hover {
-    color: var(--primary-light);
-}
-
-.wix-social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1.2rem;
-    margin-top: 0.5rem;
-}
-
-.wix-social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background-color: var(--bg-light);
-    color: var(--primary-navy);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.wix-social-icons a:hover {
-    background-color: var(--primary-navy);
-    color: #ffffff;
-    transform: translateY(-3px);
-}
-
-/* ==========================================
-   RWD 響應式媒體查詢 (Responsive Design)
-   ========================================== */
-
-/* 當螢幕寬度小於 768px (平板與手機) */
-@media screen and (max-width: 768px) {
-    
-    /* 1. 導覽列優化：在手機上將導覽選單改為垂直排列或隱藏/簡化 */
-    .nav-container {
-        padding: 1rem;
-    }
-    .nav-links {
-        gap: 1rem;
-    }
-    .nav-links a {
-        font-size: 0.85rem;
-    }
-
-    /* 2. 首頁大標題縮小，避免在手機破版換行太醜 */
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    .hero .role {
-        font-size: 1.2rem;
-    }
-
-    /* 3. 區塊上下間距縮小，讓手機瀏覽時不需要滑太久 */
-    .section {
-        padding: 4rem 1.5rem;
-    }
-
-    /* 4. 關於我與學經歷的雙欄網格改為單欄上下排列 */
-    .about-grid,
-    .resume-grid {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
-    }
-
-    /* 5. 彈出視窗 (Modal) 在手機上幾乎滿版，確保內容看得清楚 */
-    .modal-content {
-        width: 95% !important;
-        margin: 10% auto !important;
-        padding: 1.5rem !important;
-        max-height: 80vh;
-    }
-
-    /* 6. 專案詳情裡的圖片與影片高度適應手機螢幕 */
-    .modal-img,
-    .video-wrapper video,
-    .cert-img-box img {
-        height: 220px !important;
-        max-height: 250px !important;
-    }
-}
-
-/* 當螢幕更小時 (例如小於 480px 的小螢幕手機) */
-@media screen and (max-width: 480px) {
-    .nav-links {
-        display: none; /* 如果手機螢幕太擠，可以隱藏上方選單，或依需求調整 */
-    }
-    .hero h1 {
-        font-size: 2rem;
-    }
-}
+.expand-btn:hover { color: var(--text-main); }
