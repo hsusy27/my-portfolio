@@ -149,10 +149,20 @@ body {
     transform: translateY(0);
 }
 
+/* 關閉按鈕 */
 .close-btn {
-    position: absolute; top: 1.5rem; right: 1.5rem;
-    font-size: 1.5rem; color: var(--text-muted);
-    cursor: pointer; transition: color 0.2s;
+    position: absolute; 
+    top: 1.5rem; 
+    right: 1.5rem;
+    font-size: 1.5rem; 
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    cursor: pointer; 
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .close-btn:hover { color: var(--text-main); }
 
@@ -221,15 +231,19 @@ body.modal-open { overflow: hidden; }
     border-radius: 0 !important;
     padding: 3rem 4rem !important;
 }
+/* 放大/縮放按鈕 */
 .expand-btn {
     position: absolute; 
     top: 1.5rem; 
-    right: 3.5rem; /* 放在關閉按鈕左側 */
+    right: 4.2rem; /* 調整這個數值來控制兩個按鈕之間的距離 */
     font-size: 1.2rem; 
     color: var(--text-muted);
     background: none;
     border: none;
     cursor: pointer; 
     transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .expand-btn:hover { color: var(--text-main); }
