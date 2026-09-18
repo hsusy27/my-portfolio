@@ -430,3 +430,26 @@ footer {
 
 /* 鎖定背景滾動 */
 body.modal-open { overflow: hidden; }
+/* ===== 新增：統一的精緻小圓點列表 ===== */
+.custom-dot-list {
+    list-style: none; /* 隱藏預設的清單符號 */
+    padding-left: 0;
+    margin: 0;
+}
+.custom-dot-list li {
+    position: relative;
+    padding-left: 1.2rem; /* 留出左側空間給小圓點 */
+    margin-bottom: 0.6rem;
+    color: var(--text-muted);
+}
+/* 利用 ::before 畫出與時間軸一樣的小圓點 */
+.custom-dot-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65rem; /* 配合文字高度微調垂直置中 */
+    width: 6px;   /* 與時間軸一樣的精緻大小 */
+    height: 6px;
+    background-color: var(--text-muted); /* 呈現有質感的灰色小圓點[cite: 4, 5] */
+    border-radius: 50%;
+}
