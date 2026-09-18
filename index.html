@@ -364,24 +364,31 @@
                     </div>
                 </div>
 
-                <!-- 專案 6 -->
-                <div class="project-card fade-in" onclick="openModal('modal-6')" style="background: var(--bg-light); cursor: pointer;">
-                 <div class="project-img-placeholder" style="overflow: hidden; padding: 0;">
-                     <img src="assets/img/todo.png" alt="代辦事項封面" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                    <div class="project-info">
-                        <h3>個人工作待辦與日誌匯出系統</h3>
-                        <p>整合待辦事項管理並支援匯出 PDF，簡化進度彙報流程。資料儲存於瀏覽器並以密碼保護。</p>
-                        <div class="tags-container" style="margin-top: 1rem;">
-                            <span class="tag">JavaScript</span><span class="tag">工具開發</span>
+<!-- 專案 6：個人工作待辦與日誌匯出系統 -->
+    <div id="modal-6" class="modal">
+        <div class="modal-content">
+            <button class="expand-btn" onclick="toggleExpand(this)" title="點擊放大/還原視窗">
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </button>
+            <span class="close-btn" onclick="closeModal('modal-6')"><i class="fa-solid fa-xmark"></i></span>
+            <div class="modal-header">
+                <h2>yuan — 個人工作待辦與日誌匯出系統</h2>
+                <p>簡化工作彙報的輕量化工具</p>
+            </div>
+            <div class="modal-body">
+                <div class="media-container">
+                    <h4>📸 介面展示</h4>
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div class="gallery-item" style="overflow: hidden; border-radius: 8px; border: 1px solid var(--border-color);">
+                            <img src="assets/img/todo.png" alt="個人工作待辦與日誌匯出系統介面" style="width: 100%; height: auto; display: block; object-fit: cover;">
                         </div>
                     </div>
                 </div>
-
+                <h4 style="margin-top: 2rem;">開發背景與功能</h4>
+                <p>為了解決過去使用 Notion 記錄工作時，需手動整理進度報告的繁瑣流程而開發。本系統整合了待辦事項管理，並支援依指定時間區間匯出工作日誌 PDF，方便交由 AI 輔助生成進度簡報。</p>
             </div>
         </div>
-    </section>
-
+    </div>
 
 
     <footer>
