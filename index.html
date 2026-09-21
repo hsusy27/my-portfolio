@@ -258,7 +258,7 @@
                     <ul class="custom-dot-list" style="line-height: 2;">
                         <li>HTML / CSS / JavaScript</li>
                         <li>React & Tailwind CSS</li>
-                        <li>Figma UI/UX 介面設計</li>
+                        <li>UI/UX 介面設計</li>
                         <li>Streamlit 響應式開發</li>
                     </ul>
                 </div>
@@ -309,14 +309,6 @@
                     </div>
                 </div>
                 <div class="cert-card fade-in" onclick="openModal('cert-modal-4')" style="background: var(--bg-white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; transition: transform 0.3s;">
-                    <i class="fa-solid fa-language" style="font-size: 2rem; color: var(--primary-light);"></i>
-                    <div>
-                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">TOEIC 英語測驗</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">積極準備中，用於國際醫療交流與原文書閱讀</p>
-                        <span class="tag" style="margin-top: 0.5rem; display: inline-block;">點擊看進度說明</span>
-                    </div>
-                </div>
-                <div class="cert-card fade-in" onclick="openModal('cert-modal-5')" style="background: var(--bg-white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; transition: transform 0.3s;">
                     <div style="font-size: 1.9rem; color: var(--primary-navy); display: flex; align-items: center; justify-content: center; min-width: 2rem; margin-top: 1px;">
                         <i class="fa-solid fa-table-cells-large" style="color: var(--primary-light);"></i>
                     </div>
@@ -364,8 +356,10 @@
                 </div>
                 
                 <div class="project-card fade-in" onclick="openModal('modal-3')" style="background: var(--bg-light); cursor: pointer;">
-                    <div class="project-img-placeholder">圖：問卷統計分析</div>
-                    <div class="project-info">
+                  <div class="project-img-placeholder">
+                     <img src="assets/img/paper.png" alt="問卷統計分析封面">
+                   </div>
+                   <div class="project-info">
                         <h3>AI工具便利性與使用依賴傾向之探索性研究</h3>
                         <p>以「便利性認知 → 使用頻率 → 依賴傾向」為核心路徑，結合科技接受模式（TAM）與近期 AI 成癮質性研究，初步檢驗生成式 AI 工具便利性是否間接強化使用者依賴傾向。</p>
                         <div class="tags-container" style="margin-top: 1rem;">
@@ -512,25 +506,6 @@
 
     <div id="cert-modal-4" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('cert-modal-4')"><i class="fa-solid fa-xmark"></i></span>
-            <div class="modal-header">
-                <h2>TOEIC 英語測驗</h2>
-                <p>國際溝通英語能力準備</p>
-            </div>
-            <div class="modal-body">
-                <div class="cert-photo-gallery">
-                    <div class="cert-img-box">
-                        <div class="modal-img">放置 TOEIC 報名單或模擬測驗成績單截圖</div>
-                    </div>
-                </div>
-                <h4>英語能力精進目標</h4>
-                <p>因應醫院國際醫療交流（如與 Samsung Medical Center 專家學者交流）以及閱讀英文資管文獻、GitHub 開源文件之需求，持續提升聽說讀寫能力。</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="cert-modal-5" class="modal">
-        <div class="modal-content">
             <span class="close-btn" onclick="closeModal('cert-modal-5')"><i class="fa-solid fa-xmark"></i></span>
             <div class="modal-header">
                 <h2>其他</h2>
@@ -570,14 +545,6 @@
                             <source src="assets/video/BI.mp4" type="video/mp4">
                             您的瀏覽器不支援影片播放標籤，建議使用 Chrome 或 Edge。
                         </video>
-                    </div>
-                </div>
-                <div class="media-container" style="margin-top: 2rem;">
-                    <h4>📸 系統介面與功能展示</h4>
-                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                        <div class="gallery-item" style="background: var(--bg-light); height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; border: 1px solid var(--border-color);">圖 1：半導體上中下游產值總覽</div>
-                        <div class="gallery-item" style="background: var(--bg-light); height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; border: 1px solid var(--border-color);">圖 2：個股 K 線與移動平均線</div>
-                        <div class="gallery-item" style="background: var(--bg-light); height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; border: 1px solid var(--border-color);">圖 3：月營收 MoM / YoY 成長率儀表板</div>
                     </div>
                 </div>
                 <!-- 影片區塊結束 -->
@@ -839,13 +806,29 @@
             </div>
             <div class="modal-body">
                 <!-- 加回來的圖片展示區塊 -->
-                <div class="media-container">
-                    <h4>📊 研究數據與統計圖表展示</h4>
-                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                        <div class="gallery-item" style="background: var(--bg-light); height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; border: 1px solid var(--border-color);">圖 1：構念相關性熱圖 (Heatmap)</div>
-                        <div class="gallery-item" style="background: var(--bg-light); height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; border: 1px solid var(--border-color);">圖 2：不同職業別依賴傾向 ANOVA 分析圖</div>
-                    </div>
-                </div>
+            <div class="media-container">
+              <h4>📊 研究數據與統計圖表展示</h4>
+                 <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        
+                 <!-- 圖 1 -->
+                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                   <img src="assets/img/demographic_charts.png" alt="圖 1：樣本特性" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>
+                 <!-- 圖 2 -->
+                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                   <img src="assets/img/你的ANOVA圖檔名.jpg" alt="圖 2：不同職業別依賴傾向 ANOVA 分析圖" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>
+                 <!-- 圖 3 -->
+                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                   <img src="assets/img/pearson.png" alt="圖 3：問卷構念間之關聯性熱圖" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>
+                 <!-- 圖 4 -->
+                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                   <img src="assets/img/analysis.png" alt="圖 4：職業別組間差異分析" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>
+                     
+                          </div>
+                             </div>
                 <!-- 圖片區塊結束 -->
 
                 <h4 style="margin-top: 2rem;">一、研究內容說明</h4>
@@ -1089,8 +1072,24 @@
                         <div class="gallery-item" style="background: var(--bg-light); height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; border: 1px solid var(--border-color);">圖 1：經費子項目分類主畫面</div>
                         <div class="gallery-item" style="background: var(--bg-light); height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; border: 1px solid var(--border-color);">圖 2：應收應付金流快照報表</div>
                     </div>
-                </div>
-                <!-- 圖片區塊結束 -->
+                      </div><!-- 加回來的圖片展示區塊 -->
+                    <div class="media-container" style="margin-top: 2rem;">
+                    <h4>📸 介面展示</h4>
+                       <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        
+                        <!-- 圖 1 -->
+                       <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                       <img src="assets/img/money1.png" alt="圖 1：總表畫面" style="width: 100%; height: 100%; object-fit: cover;">
+                       </div>
+
+                       <!-- 圖 2 -->
+                       <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                       <img src="assets/img/金流快照報表檔名.jpg" alt="圖 2：應收應付金流快照報表" style="width: 100%; height: 100%; object-fit: cover;">
+                       </div>
+        
+                         </div>
+                              </div>
+                     <!-- 圖片區塊結束 -->
                 
                 <h4 style="margin-top: 2rem;">一、系統功能說明</h4>
                 
@@ -1315,13 +1314,15 @@ airic-site/
 
                 <!-- 加回來的圖片展示區塊 -->
                 <div class="media-container" style="margin-top: 2rem;">
-                    <h4>📸 介面展示</h4>
-                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                        <div class="gallery-item" style="overflow: hidden; border-radius: 8px; border: 1px solid var(--border-color);">
-                            <img src="assets/img/todo.png" alt="個人工作待辦與日誌匯出系統介面" style="width: 100%; height: auto; display: block; object-fit: cover;">
-                        </div>
-                    </div>
-                </div>
+                <h4>📸 介面展示</h4>
+                <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        
+               <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+              <img src="assets/img/todo1.png" alt="個人工作待辦與日誌匯出系統介面" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+               </div>
+        
+               </div>
+                 </div>
                 <!-- 圖片區塊結束 -->
 
                 <h4 style="margin-top: 2rem;">一、系統功能說明</h4>
