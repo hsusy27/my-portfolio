@@ -372,3 +372,45 @@ footer {
     background-color: var(--primary-navy); 
     color: rgba(255,255,255,0.7); font-size: 0.9rem; 
 }
+/* ==========================================================================
+   10. 圖片放大 Lightbox
+   ========================================================================== */
+.lightbox {
+    display: none; 
+    position: fixed; 
+    z-index: 3000; /* 層級設定比一般 Modal 的 2000 還高 */
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background-color: rgba(0,0,0,0.85); /* 深色半透明背景 */
+    backdrop-filter: blur(5px);
+    align-items: center; justify-content: center;
+}
+.lightbox.show {
+    display: flex; /* 使用 flex 置中圖片 */
+    animation: fadeIn 0.3s;
+}
+.lightbox-content {
+    max-width: 90%; max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    object-fit: contain;
+}
+.lightbox-close {
+    position: absolute; top: 20px; right: 30px;
+    color: #fff; font-size: 40px; font-weight: bold;
+    cursor: pointer; transition: color 0.2s;
+}
+.lightbox-close:hover { color: #D95A53; }
+
+/* 讓可點擊的圖片在滑鼠游標移過去時，顯示放大鏡符號並微幅放大 */
+.gallery-item img, .cert-img-box img {
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+}
+.gallery-item img:hover, .cert-img-box img:hover {
+    transform: scale(1.02); /* 滑鼠懸停時微幅放大暗示可點擊 */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
