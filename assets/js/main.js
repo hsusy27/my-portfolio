@@ -91,3 +91,17 @@ function toggleExpand(button) {
         icon.className = 'fa-solid fa-up-right-and-down-left-from-center';
     }
 }
+// 打開圖片放大視窗
+function openLightbox(imgElement) {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    
+    lightboxImg.src = imgElement.src; // 抓取被點擊圖片的來源網址
+    lightbox.classList.add('show');
+}
+
+// 關閉圖片放大視窗
+function closeLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    lightbox.classList.remove('show');
+}
