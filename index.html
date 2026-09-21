@@ -127,6 +127,48 @@
             background-color: var(--text-muted); 
             border-radius: 50%;
         }
+
+        /* ===== 圖片放大 Lightbox 專用樣式 ===== */
+        .lightbox {
+            display: none; 
+            position: fixed; 
+            z-index: 3000; /* 確保層級高於 Modal */
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background-color: rgba(0,0,0,0.85); 
+            backdrop-filter: blur(5px);
+            align-items: center; justify-content: center;
+        }
+        .lightbox.show {
+            display: flex; 
+            animation: fadeIn 0.3s;
+        }
+        .lightbox-content {
+            max-width: 90%; max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 30px;
+            color: #fff; font-size: 40px; font-weight: bold;
+            cursor: pointer; transition: color 0.2s;
+        }
+        .lightbox-close:hover { color: #D95A53; }
+        
+        /* 可點擊放大的圖片樣式 */
+        .zoomable-img {
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+        .zoomable-img:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -426,7 +468,7 @@
             <div class="modal-body">
                 <div class="cert-photo-gallery">
                     <div class="cert-img-box">
-                        <img src="assets/img/dp900-cert.jpg" alt="Microsoft DP-900 證明" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>放置 Microsoft DP-900 準備筆記或官網截圖</div>'">
+                        <img src="assets/img/dp900-cert.jpg" class="zoomable-img" onclick="openLightbox(this)" alt="Microsoft DP-900 證明" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>放置 Microsoft DP-900 準備筆記或官網截圖</div>'">
                     </div>
                 </div>
                 <h4>證照與學習內容說明</h4>
@@ -449,7 +491,7 @@
                    <div class="modal-body">
                      <div class="cert-photo-gallery">
                        <div class="cert-img-box">
-                        <img src="assets/img/SQL.png" alt="SQL for Data Science 證書" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>放置 Coursera SQL 證書照片</div>'">
+                        <img src="assets/img/SQL.png" class="zoomable-img" onclick="openLightbox(this)" alt="SQL for Data Science 證書" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>放置 Coursera SQL 證書照片</div>'">
                      </div>
                   </div>
 
@@ -479,13 +521,13 @@
                 <!-- 三張證書圖片展示 -->
                 <div class="cert-photo-gallery" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
                     <div class="cert-img-box">
-                        <img src="assets/img/101.png" alt="Anthropic Claude 101 證書" style="width: 100%; border-radius: 6px; border: 1px solid var(--border-color);" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>Anthropic Claude 101 證書照片</div>'">
+                        <img src="assets/img/101.png" class="zoomable-img" onclick="openLightbox(this)" alt="Anthropic Claude 101 證書" style="width: 100%; border-radius: 6px; border: 1px solid var(--border-color);" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>Anthropic Claude 101 證書照片</div>'">
                     </div>
                     <div class="cert-img-box">
-                        <img src="assets/img/DM.PNG" alt="Google Digital Marketing 證書" style="width: 100%; border-radius: 6px; border: 1px solid var(--border-color);" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>Google Digital Marketing 證書照片</div>'">
+                        <img src="assets/img/DM.PNG" class="zoomable-img" onclick="openLightbox(this)" alt="Google Digital Marketing 證書" style="width: 100%; border-radius: 6px; border: 1px solid var(--border-color);" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>Google Digital Marketing 證書照片</div>'">
                     </div>
                     <div class="cert-img-box">
-                        <img src="assets/img/AIG.PNG" alt="Google AI for Generalists 證書" style="width: 100%; border-radius: 6px; border: 1px solid var(--border-color);" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>Google AI for Generalists 證書照片</div>'">
+                        <img src="assets/img/AIG.PNG" class="zoomable-img" onclick="openLightbox(this)" alt="Google AI for Generalists 證書" style="width: 100%; border-radius: 6px; border: 1px solid var(--border-color);" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>Google AI for Generalists 證書照片</div>'">
                     </div>
                 </div>
 
@@ -506,7 +548,7 @@
 
     <div id="cert-modal-4" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('cert-modal-5')"><i class="fa-solid fa-xmark"></i></span>
+            <span class="close-btn" onclick="closeModal('cert-modal-4')"><i class="fa-solid fa-xmark"></i></span>
             <div class="modal-header">
                 <h2>其他</h2>
                 <p>其他進修</p>
@@ -812,19 +854,19 @@
         
                  <!-- 圖 1 -->
                  <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/demographic_charts.png" alt="圖 1：樣本特性" style="width: 100%; height: 100%; object-fit: cover;">
+                   <img src="assets/img/demographic_charts.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：樣本特性" style="width: 100%; height: 100%; object-fit: cover;">
                       </div>
                  <!-- 圖 2 -->
                  <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/你的ANOVA圖檔名.jpg" alt="圖 2：不同職業別依賴傾向 ANOVA 分析圖" style="width: 100%; height: 100%; object-fit: cover;">
+                   <img src="assets/img/你的ANOVA圖檔名.jpg" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：不同職業別依賴傾向 ANOVA 分析圖" style="width: 100%; height: 100%; object-fit: cover;">
                       </div>
                  <!-- 圖 3 -->
                  <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/pearson.png" alt="圖 3：問卷構念間之關聯性熱圖" style="width: 100%; height: 100%; object-fit: cover;">
+                   <img src="assets/img/pearson.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 3：問卷構念間之關聯性熱圖" style="width: 100%; height: 100%; object-fit: cover;">
                       </div>
                  <!-- 圖 4 -->
                  <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/analysis.png" alt="圖 4：職業別組間差異分析" style="width: 100%; height: 100%; object-fit: cover;">
+                   <img src="assets/img/analysis.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 4：職業別組間差異分析" style="width: 100%; height: 100%; object-fit: cover;">
                       </div>
                      
                           </div>
@@ -1079,12 +1121,12 @@
         
                         <!-- 圖 1 -->
                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                       <img src="assets/img/money1.png" alt="圖 1：總表畫面" style="width: 100%; height: 100%; object-fit: cover;">
+                       <img src="assets/img/money1.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：總表畫面" style="width: 100%; height: 100%; object-fit: cover;">
                        </div>
 
                        <!-- 圖 2 -->
                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                       <img src="assets/img/金流快照報表檔名.jpg" alt="圖 2：應收應付金流快照報表" style="width: 100%; height: 100%; object-fit: cover;">
+                       <img src="assets/img/金流快照報表檔名.jpg" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：應收應付金流快照報表" style="width: 100%; height: 100%; object-fit: cover;">
                        </div>
         
                          </div>
@@ -1318,7 +1360,7 @@ airic-site/
                 <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
         
                <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-              <img src="assets/img/todo1.png" alt="個人工作待辦與日誌匯出系統介面" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              <img src="assets/img/todo1.png" class="zoomable-img" onclick="openLightbox(this)" alt="個人工作待辦與日誌匯出系統介面" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                </div>
         
                </div>
@@ -1374,7 +1416,37 @@ airic-site/
         </div>
     </div>
 
+    <!-- 圖片點擊放大專用 Lightbox (新增區塊) -->
+    <div id="image-lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="">
+    </div>
+
     <!-- 核心 JS 邏輯 -->
     <script src="assets/js/main.js"></script>
+    
+    <!-- Lightbox 控制腳本 (新增區塊) -->
+    <script>
+        function openLightbox(imgElement) {
+            // 阻止事件冒泡，以免觸發外層的點擊事件
+            if(event) event.stopPropagation(); 
+            
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            // 將 Lightbox 的圖片來源設為被點擊的圖片來源
+            lightboxImg.src = imgElement.src; 
+            lightbox.classList.add('show');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('image-lightbox');
+            lightbox.classList.remove('show');
+            // 清空來源避免下次打開時殘留畫面
+            setTimeout(() => {
+                document.getElementById('lightbox-img').src = "";
+            }, 300);
+        }
+    </script>
 </body>
 </html>
