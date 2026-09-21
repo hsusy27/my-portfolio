@@ -308,8 +308,24 @@ body.modal-open { overflow: hidden; } /* 鎖定背景滾動 */
 .modal-header h2 { color: var(--primary-navy); margin-bottom: 0.5rem; font-size: 1.8rem; }
 .modal-header p { color: var(--text-muted); font-size: 1.1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
 .modal-body h4 { color: var(--primary-navy); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.2rem; }
-.modal-body p, .modal-body li { color: var(--text-main); font-size: 0.95rem; line-height: 1.8; }
 .modal-body ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+
+/* 強制 Modal 內的段落與列表文字使用較深的文字顏色，保持一致性 */
+.modal-body p, 
+.modal-body li, 
+.modal-body .custom-dot-list li { 
+    color: #4A5568 !important; 
+    font-size: 0.95rem; 
+    line-height: 1.8; 
+}
+
+/* 針對重點標示 (strong, b) 的舒適淺紅色 */
+.modal-body strong, 
+.modal-body b {
+    color: #D95A53 !important; /* 舒適的珊瑚紅/磚紅色 */
+    font-weight: 600;          /* 稍微加粗增加對比 */
+    letter-spacing: 0.5px;     /* 讓重點字稍微拉開，更好閱讀 */
+}
 
 /* 確保彈窗內的所有媒體與表格絕對不撐破螢幕 */
 .modal-body img,
