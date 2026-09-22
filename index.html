@@ -8,20 +8,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-                /* ===== 修正彈跳視窗標題與按鈕重疊問題 ===== */
+              /* ===== 修正手機版彈窗排版與按鈕大小 ===== */
         .modal-header {
-            /* 在標題右側預留 90px 的空白空間，避免文字撞到按鈕 */
-            padding-right: 90px; 
+            padding-right: 90px; /* 電腦版維持原本的安全距離 */
         }
 
-        /* 針對手機版螢幕的進階微調 */
         @media (max-width: 768px) {
+            /* 1. 縮小按鈕的圖示與感應區塊大小 */
+            .close-btn, .expand-btn {
+                width: 32px !important;
+                height: 32px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .close-btn i, .expand-btn i {
+                font-size: 1.1rem !important; /* 縮小圖示尺寸 */
+            }
+
+            /* 2. 微調按鈕位置，讓它們稍微往右上角靠攏 */
+            .close-btn {
+                top: 12px !important;
+                right: 12px !important;
+            }
+            .expand-btn {
+                top: 12px !important;
+                right: 48px !important; /* 緊貼在 X 旁邊 */
+            }
+
+            /* 3. 縮小按鈕後，就可以把標題右側的空間還給文字 */
             .modal-header {
-                padding-right: 85px; 
+                padding-right: 80px; /* 縮小內邊距，讓文字有更多寬度可以舒展 */
             }
             .modal-header h2 {
-                /* 稍微縮小手機版的標題字級與行高，讓閱讀更舒適 */
-                font-size: 1.45rem; 
+                font-size: 1.35rem; /* 稍微微調標題字級，視覺比例更平衡 */
                 line-height: 1.4;
             }
         }
