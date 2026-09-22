@@ -8,43 +8,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-              /* ===== 修正手機版彈窗排版與按鈕大小 ===== */
+               /* ===== 修正手機版彈窗排版與按鈕大小（加強覆蓋版） ===== */
         .modal-header {
-            padding-right: 90px; /* 電腦版維持原本的安全距離 */
+            padding-right: 90px;
         }
 
         @media (max-width: 768px) {
-            /* 1. 縮小按鈕的圖示與感應區塊大小 */
-            .close-btn, .expand-btn {
+            /* 1. 強制重置按鈕容器，確保兩者長得一樣 */
+            .modal-content .close-btn, 
+            .modal-content .expand-btn {
                 width: 32px !important;
                 height: 32px !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-            }
-            .close-btn i, .expand-btn i {
-                font-size: 1.1rem !important; /* 縮小圖示尺寸 */
-            }
-
-            /* 2. 微調按鈕位置，讓它們稍微往右上角靠攏 */
-            .close-btn {
-                top: 12px !important;
-                right: 12px !important;
-            }
-            .expand-btn {
-                top: 12px !important;
-                right: 48px !important; /* 緊貼在 X 旁邊 */
+                background: transparent !important; /* 消除 button 預設背景 */
+                border: none !important;            /* 消除 button 預設邊框 */
+                padding: 0 !important;              /* 消除 button 預設內邊距 */
+                top: 15px !important;               /* 讓兩者的垂直高度完全一致 */
             }
 
-            /* 3. 縮小按鈕後，就可以把標題右側的空間還給文字 */
+            /* 2. 微調左右位置 */
+            .modal-content .close-btn {
+                right: 15px !important;
+            }
+            .modal-content .expand-btn {
+                right: 50px !important; /* 貼在 X 旁邊 */
+            }
+
+            /* 3. 強制縮小裡面的圖示 (改用 px 最精準) */
+            .modal-content .close-btn i, 
+            .modal-content .expand-btn i {
+                font-size: 16px !important; /* 強制把圖示字級縮小到 16px */
+            }
+
+            /* 4. 將標題右側空間還給文字 */
             .modal-header {
-                padding-right: 80px; /* 縮小內邊距，讓文字有更多寬度可以舒展 */
+                padding-right: 85px !important; 
             }
             .modal-header h2 {
-                font-size: 1.35rem; /* 稍微微調標題字級，視覺比例更平衡 */
+                font-size: 1.35rem; 
                 line-height: 1.4;
             }
         }
+      
 
         /* ===== 專案內文補充樣式 ===== */
         .info-table {
