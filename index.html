@@ -8,6 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+                /* ===== 修正彈跳視窗標題與按鈕重疊問題 ===== */
+        .modal-header {
+            /* 在標題右側預留 90px 的空白空間，避免文字撞到按鈕 */
+            padding-right: 90px; 
+        }
+
+        /* 針對手機版螢幕的進階微調 */
+        @media (max-width: 768px) {
+            .modal-header {
+                padding-right: 85px; 
+            }
+            .modal-header h2 {
+                /* 稍微縮小手機版的標題字級與行高，讓閱讀更舒適 */
+                font-size: 1.45rem; 
+                line-height: 1.4;
+            }
+        }
+
         /* ===== 專案內文補充樣式 ===== */
         .info-table {
             width: 100%;
