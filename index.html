@@ -374,7 +374,7 @@
                     <div>
                         <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">SQL for Data Science</h4>
                         <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Coursera 專業認證課程 (已取得完課證明)</p>
-                        <span class="tag" style="margin-top: 0.5rem; display: inline-block;">點擊查看證書照片</span>
+                        <span class="tag" style="margin-top: 0.5rem; display: inline-block;"></span>
                     </div>
                 </div>
                 <div class="cert-card fade-in" onclick="openModal('cert-modal-2')" style="background: var(--bg-white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; transition: transform 0.3s;">
@@ -382,25 +382,15 @@
                     <div>
                         <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">Google Ads AI & Claude 101</h4>
                         <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Google Ads AI 認證與 Anthropic Claude 101 證明</p>
-                        <span class="tag" style="margin-top: 0.5rem; display: inline-block;">點擊查看證書照片</span>
+                        <span class="tag" style="margin-top: 0.5rem; display: inline-block;"></span>
                     </div>
                 </div>
                 <div class="cert-card fade-in" onclick="openModal('cert-modal-3')" style="background: var(--bg-white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; transition: transform 0.3s;">
                     <i class="fa-solid fa-cloud" style="font-size: 2rem; color: var(--primary-light);"></i>
                     <div>
-                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">Microsoft DP-900</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Azure Data Fundamentals (雲端與數據基礎官方認證準備中)</p>
-                        <span class="tag" style="margin-top: 0.5rem; display: inline-block;">點擊看詳情 & 證照</span>
-                    </div>
-                </div>
-                <div class="cert-card fade-in" onclick="openModal('cert-modal-4')" style="background: var(--bg-white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; transition: transform 0.3s;">
-                    <div style="font-size: 1.9rem; color: var(--primary-navy); display: flex; align-items: center; justify-content: center; min-width: 2rem; margin-top: 1px;">
-                        <i class="fa-solid fa-table-cells-large" style="color: var(--primary-light);"></i>
-                    </div>
-                    <div>
-                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">其他</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">積極準備中，用於國際醫療交流與原文書閱讀</p>
-                        <span class="tag" style="margin-top: 0.5rem; display: inline-block;">點擊看證書照片</span>
+                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">其他進行中</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">積極準備中與進修中</p>
+                        <span class="tag" style="margin-top: 0.5rem; display: inline-block;"></span>
                     </div>
                 </div>
             </div>
@@ -579,9 +569,16 @@
                         <img src="assets/img/dp900-cert.jpg" class="zoomable-img" onclick="openLightbox(this)" alt="Microsoft DP-900 證明" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>放置 Microsoft DP-900 準備筆記或官網截圖</div>'">
                     </div>
                 </div>
-                <h4>證照與學習內容說明</h4>
+                <h4>Microsoft DP-900</h4>
                 <p>本認證聚焦於核心資料概念、Azure 上的非關聯式與關聯式資料服務，以及 Azure 上的現代化資料倉儲與分析工作負載。</p>
                 <ul>
+                    <li><strong>核心考點：</strong>了解 Structured vs Unstructured 數據、ETL/ELT 概念、Azure SQL 與 Cosmos DB 差異。</li>
+                    <li><strong>備考規劃：</strong>搭配 Coursera 官方課程與實際 DBeaver / SQL 練習，預計於近期完成考試並取得電子徽章。</li>
+                </ul>
+                
+                <h4>證書簡介</h4>
+                <p>本區塊整合 Google「數位人才探索計畫」（Digital Marketing & AI for Generalists）與 Anthropic 官方「Claude 101」學習證明。內容涵蓋 Google Analytics 4 (GA4) 數據概念、生成式 AI 工具（Gemini、Claude、NotebookLM）之基礎應用與提示詞技巧，建立跨平台的生成式 AI 與數位數據理解。</p>
+                 <ul>
                     <li><strong>核心考點：</strong>了解 Structured vs Unstructured 數據、ETL/ELT 概念、Azure SQL 與 Cosmos DB 差異。</li>
                     <li><strong>備考規劃：</strong>搭配 Coursera 官方課程與實際 DBeaver / SQL 練習，預計於近期完成考試並取得電子徽章。</li>
                 </ul>
@@ -589,24 +586,6 @@
         </div>
     </div>
     
-    <div id="cert-modal-4" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('cert-modal-4')"><i class="fa-solid fa-xmark"></i></span>
-            <div class="modal-header">
-                <h2>其他</h2>
-                <p>其他進修</p>
-            </div>
-            <div class="modal-body">
-                <div class="cert-photo-gallery">
-                    <div class="cert-img-box">
-                        <div class="modal-img">放置 證照截圖</div>
-                    </div>
-                </div>
-                <h4>英語能力精進目標</h4>
-                <p>因應醫院國際醫療交流（如與 Samsung Medical Center 專家學者交流）以及閱讀英文資管文獻、GitHub 開源文件之需求，持續提升聽說讀寫能力。</p>
-            </div>
-        </div>
-    </div>
 
     <!-- ================= 專案彈出視窗 (Project Modals) ================= -->
     
