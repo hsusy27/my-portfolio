@@ -492,17 +492,17 @@
                 </div>
                 
                 <div class="project-card fade-in" onclick="openModal('modal-8')" style="background: var(--bg-light); cursor: pointer;">
-                    <div class="project-img-placeholder" style="overflow: hidden; padding: 0;">
-                        <img src="assets/img/todo.png" alt="BI 數據分析作品：台灣連鎖咖啡品牌分析封面" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="project-info">
-                        <h3>BI 數據分析作品：台灣連鎖咖啡品牌分析 </h3>
-                        <p>雲端 API 版，自動將會議錄音轉換為逐字稿、會議記錄與待辦事項。</p>
-                        <div class="tags-container" style="margin-top: 1rem;">
-                            <span class="tag">Python</span><span class="tag">Tableau Public</span>
+                   <div class="project-img-placeholder" style="overflow: hidden; padding: 0;">
+                       <img src="assets/img/todo.png" alt="BI 數據分析作品：台灣連鎖咖啡品牌分析封面" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                       <div class="project-info">
+                       <h3>BI 數據分析作品：台灣連鎖咖啡品牌分析</h3>
+                       <p>以免費公開資料串接四種來源，分析星巴克、路易莎、Cama、怡客、丹堤五大連鎖咖啡品牌的展店策略與網路口碑落差，產出 Tableau 五頁互動儀表板。</p>
+                       <div class="tags-container" style="margin-top: 1rem;">
+                           <span class="tag">Python</span><span class="tag">Tableau Public</span><span class="tag">ETL</span>
                         </div>
-                    </div>
-                </div> 
+                     </div>
+                 </div>
                 
                 <div class="project-card fade-in" onclick="openModal('modal-9')" style="background: var(--bg-light); cursor: pointer;">
                     <div class="project-img-placeholder" style="overflow: hidden; padding: 0;">
@@ -1457,6 +1457,329 @@ airic-site/
         </div>
     </div>
 
+    <!-- 專案 7：會議記錄轉錄與自動整理工具 -->
+    <div id="modal-7" class="modal">
+        <div class="modal-content">
+            <button class="expand-btn" onclick="toggleExpand(this)" title="點擊放大/還原視窗">
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </button>
+            <span class="close-btn" onclick="closeModal('modal-7')"><i class="fa-solid fa-xmark"></i></span>
+            <div class="modal-header">
+                <h2>會議記錄轉錄與自動整理工具</h2>
+                <p>將會議錄音自動轉換為逐字稿、結構化會議記錄與待辦事項，已在本機實際處理過真實工作會議錄音並產出可用結果。</p>
+            </div>
+            <div class="modal-body">
+
+                <h4>一、專案概述</h4>
+                <p>一個將會議錄音自動轉換為逐字稿、結構化會議記錄與待辦事項的工具。使用者上傳錄音檔，程式自動切段並交由 Gemini API 轉錄，再整理成含主題分類、重點、細節的巢狀會議記錄，並萃取待辦事項（負責人、任務、期限）。</p>
+
+                <h4>二、動機與問題</h4>
+                <p>工作中需要整理會議紀錄，傳統做法是人工聽錄音、手動彙整，耗時且容易遺漏待辦事項或誤記負責人。坊間雖有「手機語音轉文字再丟給生成式 AI」的做法，但這類做法缺乏針對長錄音的穩定切割機制、缺乏針對會議紀錄格式的提示詞設計，也沒有處理 API 呼叫失敗的容錯機制，實務上常常中途失敗就得整個重來。</p>
+
+                <h4>三、技術架構</h4>
+                <div class="code-block">會議錄音（m4a／mp3／wav）
+    ↓ ffmpeg 切段（每 30 分鐘一段，統一轉 16kHz 單聲道）
+    ↓ Gemini API 逐段轉錄（upload file + generate_content）
+    ↓ 合併逐字稿
+    ↓ Gemini API 整理（結構化提示詞）
+會議記錄（主題／重點／細節）＋ 待辦事項（負責人／任務／期限）</div>
+                <div class="badge-row">
+                    <span>Python</span><span>Google Gemini API (google-genai SDK)</span><span>ffmpeg</span><span>python-dotenv</span>
+                </div>
+
+                <h4>四、關鍵設計決策</h4>
+
+                <h5>1. 為什麼切段？</h5>
+                <p>長會議一次送出容易因逾時或輸出長度上限而失敗。切成 30 分鐘一段，任一段失敗不會拖垮整體；目前版本採「全段成功才存檔」策略，避免產出殘缺逐字稿。</p>
+
+                <h5>2. 為什麼自動重試＋備用模型？</h5>
+                <p>開發過程中實際遇到 Gemini 新模型因需求量大頻繁回傳 503，也遇過模型版本下架（404）。因此設計了分層容錯：先對同一模型重試（處理暫時性忙碌或網路中斷），仍失敗則依序切換備用模型，而非直接讓整個流程中斷。這個設計是從真實踩坑中逐步補強出來的，不是預先設計好的。</p>
+
+                <h5>3. 為什麼不用 pydub？</h5>
+                <p>pydub 依賴 Python 3.13 已移除的 audioop 模組，在較新版本的 Python 上會直接出錯。改用 ffmpeg 子程序處理，更穩定也支援更多格式。</p>
+
+                <h5>4. 提示詞設計</h5>
+                <p>依照使用者實際工作場域的會議紀錄範本（巢狀條列、主管重要指示標註、待辦事項含負責人與期限）反覆調整，並明確要求模型對逐字稿未提及的資訊一律標示「未提及」，避免模型自行編造負責人或期限。</p>
+
+                <hr class="section-divider">
+
+                <h4>五、資安設計與考量</h4>
+
+                <h5>開發階段：避免金鑰與錄音外洩</h5>
+                <ul class="custom-dot-list">
+                    <li>API 金鑰透過環境變數讀取（<code>os.getenv("GEMINI_API_KEY")</code>），不寫死在程式碼裡，程式碼本身不含任何機密資訊</li>
+                    <li><code>.gitignore</code> 排除 <code>.env</code>、所有錄音格式（mp3／m4a／wav）與 <code>output/</code> 輸出資料夾，避免金鑰與會議內容被提交進版本控制</li>
+                    <li>推送到 GitHub（公開儲存庫）前，採取手動檢查流程：先用 <code>git status</code>／<code>git ls-files</code> 確認「準備上傳的清單」不含敏感檔案，再執行 commit 與 push，push 完成後再到 GitHub 網頁肉眼複查一次檔案列表，作為最後一道防線</li>
+                    <li>這個「先檢查、不先上傳」的習慣，是從一開始就刻意建立的流程，不是上傳後才補救</li>
+                </ul>
+
+                <h5>使用階段：資料流向與第三方處理</h5>
+                <ul class="custom-dot-list">
+                    <li>錄音與逐字稿會上傳到 Google Gemini API 處理，屬於第三方雲端服務，不是地端運算</li>
+                    <li>因此在 README 中明確提醒：若用於公司會議，使用前應先確認所屬單位的資安規範是否允許將內容傳到外部服務，並建議機密會議使用付費額度</li>
+                </ul>
+
+                <hr class="section-divider">
+
+                <h4>六、目前狀態與限制</h4>
+                <ul class="custom-dot-list">
+                    <li>逐字稿目前沒有說話者標記，待辦負責人僅能依對話內容推斷</li>
+                    <li>語音辨識可能有同音錯字</li>
+                    <li>切段處可能讓句子被硬切成兩段</li>
+                    <li>需要網路，且錄音會上傳到 Google 伺服器處理</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+ <!-- 專案 8：BI 數據分析作品：台灣連鎖咖啡品牌分析 -->
+    <div id="modal-8" class="modal">
+        <div class="modal-content">
+            <button class="expand-btn" onclick="toggleExpand(this)" title="點擊放大/還原視窗">
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </button>
+            <span class="close-btn" onclick="closeModal('modal-8')"><i class="fa-solid fa-xmark"></i></span>
+            <div class="modal-header">
+                <h2>BI 數據分析作品：台灣連鎖咖啡品牌分析</h2>
+                <p>以免費公開資料，回答「台灣連鎖咖啡品牌的展店策略與網路口碑有什麼落差」，涵蓋星巴克、路易莎、Cama、怡客、丹堤五個品牌。</p>
+            </div>
+            <div class="modal-body">
+
+                <div class="media-container">
+                    <h4>🔗 系統連結</h4>
+                    <p>互動儀表板（Tableau Public）：<a href="https://public.tableau.com/app/profile/shihyuan.hsu/viz/_17911135071140/1" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此查看互動儀表板</a></p>
+                    <p>程式碼與說明（GitHub）：<a href="https://github.com/hsusy27/taiwan-coffee-chain-analysis" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此查看 GitHub Repository</a></p>
+                </div>
+
+                <h4 style="margin-top: 2rem;">一、開發方式</h4>
+                <ul class="custom-dot-list">
+                    <li><strong>資料管線：</strong>以 Python 撰寫 9 支腳本，一支只做一件事，上一支的輸出就是下一支的輸入（ETL 架構）。</li>
+                    <li><strong>迭代開發：</strong>每一步先跑小範圍、檢查資料品質，再決定下一步；例如發現稅籍資料沒有星巴克門市後，改用 OpenStreetMap。</li>
+                    <li><strong>版本控制：</strong>Git 與 GitHub，以 .gitignore 排除原始大檔與含個資的檔案。</li>
+                    <li><strong>視覺化：</strong>Tableau Public 五頁互動儀表板。</li>
+                    <li><strong>AI 輔助：</strong>使用 AI 程式助理協助撰寫與除錯程式碼；研究問題設計、資料來源取捨、人工標註與結論判讀由我完成。</li>
+                </ul>
+
+                <h4>二、核心功能</h4>
+                <ul class="custom-dot-list">
+                    <li><strong>門市地理分析：</strong>860 間門市的點地圖、各品牌北中南分布、每萬人門市數排行。</li>
+                    <li><strong>展店趨勢分析：</strong>以稅籍登記追蹤路易莎 223 間分公司的設立年份與區域重心變化。</li>
+                    <li><strong>網路口碑分析：</strong>爬取 PTT 656 篇文章、約 1.5 萬則推文，以自建詞典判斷情緒與主題。</li>
+                    <li><strong>品牌綜合定位：</strong>整合規模、口碑、促銷反應，比較各品牌的市場位置。</li>
+                </ul>
+
+                <h4>三、解決的問題</h4>
+                <ul class="custom-dot-list">
+                    <li><strong>資料分散、店數不透明：</strong>品牌不公開完整門市資料，串接四種公開資料，建立可比較的門市與人口指標。</li>
+                    <li><strong>店多不等於密度高：</strong>只看門市數，臺北市一定最多；換算每萬人門市數後，才看得出品牌跟著商辦人潮走。</li>
+                    <li><strong>推噓不等於口碑：</strong>驗證發現 PTT 推噓代表「是否同意發文者」，改以留言內容判斷對品牌的態度，並把促銷文與體驗文分開計算。</li>
+                    <li><strong>免費、可重現：</strong>不依賴付費 API，任何人拿到程式與公開資料都能重跑出相同結果。</li>
+                </ul>
+
+                <hr class="section-divider">
+
+                <h4>四、功能說明</h4>
+                <p>系統分為兩層：後端是 9 支 Python 腳本組成的資料管線，前端是 5 頁 Tableau 儀表板，每頁用一句結論當標題。</p>
+
+                <h5>儀表板五頁</h5>
+                <table class="info-table">
+                    <thead>
+                        <tr><th>頁面</th><th>標題結論</th><th>主要圖表</th><th>關鍵數字</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="center">1 地理分布</td>
+                            <td>連鎖咖啡跟著白天的人走，而不是住的人</td>
+                            <td>門市點地圖、區域占比、每萬人門市數前 10 名</td>
+                            <td>中正區 2.36 間／萬人；星巴克中南部 41%、路易莎 29%</td>
+                        </tr>
+                        <tr>
+                            <td class="center">2 展店趨勢</td>
+                            <td>路易莎走過擴張、放緩、再加速三階段，新店重心往中南部移</td>
+                            <td>逐年新設與累計組合圖、各時期區域占比</td>
+                            <td>2025 年新設 42 間；北部占比 90% 降至 61%</td>
+                        </tr>
+                        <tr>
+                            <td class="center">3 品牌口碑</td>
+                            <td>Cama 最正面、星巴克中性、路易莎偏負面</td>
+                            <td>淨情緒長條圖、主題熱力表、文字雲、爭議留言年度分布</td>
+                            <td>淨情緒 +27、+5、-42</td>
+                        </tr>
+                        <tr>
+                            <td class="center">4 綜合洞察</td>
+                            <td>規模、口碑、促銷反應三者並不同步</td>
+                            <td>品牌定位泡泡圖、促銷噓比例、品牌總覽表</td>
+                            <td>路易莎優惠文噓比例 17.8%，星巴克 9.6%</td>
+                        </tr>
+                        <tr>
+                            <td class="center">5 方法與限制</td>
+                            <td>資料來源、方法與限制</td>
+                            <td>架構圖、資料來源、驗證、限制、資料倫理</td>
+                            <td>詞典準確率 82%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>互動功能：第 1 頁點選品牌長條，地圖只顯示該品牌門市；第 3 頁文字雲可用下拉選單切換品牌。五個品牌在各頁使用固定顏色。</p>
+
+                <h5>資料管線</h5>
+                <table class="info-table">
+                    <thead>
+                        <tr><th>腳本</th><th>輸入</th><th>處理重點</th><th>輸出</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>process_tax_registration.py</td>
+                            <td>財政部稅籍登記（約 66 MB）</td>
+                            <td>分批讀取避免記憶體不足、品牌關鍵字比對、民國轉西元</td>
+                            <td>咖啡品牌登記清單</td>
+                        </tr>
+                        <tr>
+                            <td>fetch_osm_coffee.py</td>
+                            <td>OpenStreetMap Overpass API</td>
+                            <td>台灣切 10 區分批查詢、伺服器輪替重試、快取續傳</td>
+                            <td>863 筆門市點位</td>
+                        </tr>
+                        <tr>
+                            <td>clean_stores.py</td>
+                            <td>門市點位、內政部鄉鎮界線</td>
+                            <td>空間連結判斷所在鄉鎮、轉 TWD97 座標以 30 公尺去重</td>
+                            <td>860 間門市（含縣市、鄉鎮）</td>
+                        </tr>
+                        <tr>
+                            <td>add_population.py</td>
+                            <td>門市、戶政司人口</td>
+                            <td>名稱正規化（台／臺）、每萬人門市數、排除人口未滿 5 萬的小樣本</td>
+                            <td>鄉鎮指標表</td>
+                        </tr>
+                        <tr>
+                            <td>louisa_trend.py</td>
+                            <td>稅籍清單</td>
+                            <td>排除工廠與無關商號、全形轉半形、最長前綴比對鄉鎮</td>
+                            <td>路易莎逐年與區域統計</td>
+                        </tr>
+                        <tr>
+                            <td>ptt_scraper.py</td>
+                            <td>PTT 五個看板</td>
+                            <td>標題搜尋、每次請求間隔 1 秒、文章分類、斷點續傳</td>
+                            <td>文章與推文</td>
+                        </tr>
+                        <tr>
+                            <td>lexicon.py</td>
+                            <td>無</td>
+                            <td>咖啡情境情緒詞典、否定詞處理、六個主題詞典</td>
+                            <td>供分析程式引用</td>
+                        </tr>
+                        <tr>
+                            <td>sentiment_analysis.py</td>
+                            <td>文章、推文、詞典</td>
+                            <td>促銷／體驗分類、情緒評分、主題統計、抽樣人工標註驗證</td>
+                            <td>品牌情緒、主題、年度、關鍵字表</td>
+                        </tr>
+                        <tr>
+                            <td>build_overview.py</td>
+                            <td>前述彙總表</td>
+                            <td>合併為每品牌一列</td>
+                            <td>品牌總表</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr class="section-divider">
+
+                <h4>五、資安評估</h4>
+                <p>整體風險低：全部使用公開資料、不需任何 API 金鑰。主要風險在個資與爬蟲合規，已在開發中處理；剩下的是套件版本鎖定等改善項目。</p>
+                <table class="info-table">
+                    <thead>
+                        <tr><th>風險</th><th>已採取措施</th><th>待改善</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>第三人個資外洩（PTT 帳號、留言原文）</td>
+                            <td>.gitignore 排除含帳號與原文的 4 個檔案；上傳前以 git status 與發佈清單逐一確認；Tableau 只連接彙總資料</td>
+                            <td>加入 pre-commit 檢查，自動阻擋含帳號欄位的檔案被提交</td>
+                        </tr>
+                        <tr>
+                            <td>開發者個資暴露</td>
+                            <td>Git 提交使用 GitHub 代用信箱（noreply），不公開個人 Email</td>
+                            <td>無</td>
+                        </tr>
+                        <tr>
+                            <td>金鑰或密碼外洩</td>
+                            <td>所有資料源皆免金鑰，程式中沒有任何憑證；GitHub 登入使用瀏覽器授權，密碼不經過終端機</td>
+                            <td>若未來加入付費 API，金鑰放環境變數或 .env，並列入 .gitignore</td>
+                        </tr>
+                        <tr>
+                            <td>爬蟲造成目標網站負擔或違反條款</td>
+                            <td>PTT 每次請求間隔 1 秒、標示 User-Agent、快取避免重抓；Overpass 分區查詢並先查伺服器狀態；Dcard 因服務條款不允許自動擷取而未採用</td>
+                            <td>在 README 記錄各站 robots.txt 的檢查結果</td>
+                        </tr>
+                        <tr>
+                            <td>第三方套件漏洞（供應鏈）</td>
+                            <td>只使用 5 個主流開源套件，安裝在獨立虛擬環境 .venv</td>
+                            <td>requirements.txt 尚未鎖定版本；應固定版本、用 pip-audit 掃描，並開啟 GitHub Dependabot</td>
+                        </tr>
+                        <tr>
+                            <td>外部輸入的解析風險</td>
+                            <td>HTML 只用 BeautifulSoup 解析、不執行網頁內容；CSV 以字串型態讀入；程式不使用 eval 等動態執行</td>
+                            <td>無</td>
+                        </tr>
+                        <tr>
+                            <td>網路請求失控</td>
+                            <td>全部使用 HTTPS；每個請求設逾時與重試上限，不會無限重試</td>
+                            <td>無</td>
+                        </tr>
+                        <tr>
+                            <td>資料來源可信度</td>
+                            <td>使用政府與 OpenStreetMap 官方來源；以人口總數 2,263 萬交叉檢查串接結果</td>
+                            <td>記錄每份原始檔的下載日期與 SHA-256 雜湊值，確保可追溯</td>
+                        </tr>
+                        <tr>
+                            <td>公開平台資料可被下載</td>
+                            <td>Tableau Public 與 GitHub 只含彙總統計；發佈前逐一檢查資料來源清單</td>
+                            <td>無</td>
+                        </tr>
+                        <tr>
+                            <td>授權合規</td>
+                            <td>標註 © OpenStreetMap contributors（ODbL）與政府資料開放授權條款</td>
+                            <td>為 repo 加上程式碼授權（例如 MIT）</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>   
+
+   <!-- 專案 9：大學畢業專題：提升門診雲端藥歷查詢率 -->
+    <div id="modal-9" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-9')"><i class="fa-solid fa-xmark"></i></span>
+            <div class="modal-header">
+                <h2>大學畢業專題：提升門診雲端藥歷查詢率</h2>
+                <p>運用 4M 分析法探討雲端藥歷系統導入瓶頸，確立以「使用者體驗」為核心的系統思維。</p>
+            </div>
+            <div class="modal-body">
+
+                <h4>一、專題概述</h4>
+                <p>就讀長榮大學醫務管理學系期間的畢業專題，針對門診雲端藥歷系統使用率偏低的現象，以 4M 分析法（Man 人員、Machine 設備、Material 物料／資訊、Method 方法／流程）拆解可能的導入瓶頸，並從中歸納出提升查詢率的改善方向。</p>
+
+                <h4>二、研究方法</h4>
+                <p>以 4M 分析法作為問題拆解架構，分別從醫護人員操作習慣（Man）、系統介面與軟硬體設備（Machine）、藥歷資料的完整性與正確性（Material）、以及門診作業流程與查詢動線（Method）四個面向，逐一檢視雲端藥歷系統在實際門診場域中未被充分使用的原因。</p>
+
+                <h4>三、核心發現</h4>
+                <p>分析後確立「使用者體驗」為核心的系統思維：系統功能完整不代表會被使用，查詢流程是否貼合醫護人員既有的看診節奏，往往才是決定雲端藥歷是否被實際採用的關鍵因素。</p>
+
+                <hr class="section-divider">
+
+                <p style="font-size: 0.9rem; color: var(--text-muted); font-style: italic;">
+                    這個專題的細節目前還在整理中——如果妳想補充當時的具體分析過程、數據或結論（例如 4M 各構面的發現、改善建議、成果），之後可以再把這個區塊補得跟其他專案一樣完整。
+                </p>
+
+            </div>
+        </div>
+    </div>
+    
     <!-- 圖片點擊放大專用 Lightbox (新增區塊) -->
     <div id="image-lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
