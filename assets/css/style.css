@@ -3,7 +3,7 @@
    ========================================================================== */
 :root {
     --primary-navy: #1C2E4A; /* 丈青色 */
-    --primary-light: #2A4365; 
+    --primary-light: #2A4365;
     --bg-white: #FFFFFF;
     --bg-light: #F7F9FB; /* 淡淡的藍灰色背景 */
     --text-main: #2D3748;
@@ -11,10 +11,10 @@
     --border-color: #E2E8F0;
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* 徹底防止手機版畫面右滑出現空白 */
@@ -23,7 +23,7 @@ html, body {
     color: var(--text-main);
     background-color: var(--bg-white);
     line-height: 1.6;
-    overflow-x: hidden !important; 
+    overflow-x: hidden !important;
     max-width: 100vw !important;
     position: relative;
 }
@@ -43,31 +43,31 @@ html, body {
     text-decoration: none; border-radius: 4px; font-weight: 500;
     transition: background-color 0.3s, transform 0.2s;
 }
-.btn-primary:hover { 
-    background-color: var(--primary-light); 
-    transform: translateY(-2px); 
+.btn-primary:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
 }
 
 /* 動畫輔助類別 */
-.fade-in { 
-    opacity: 0; 
-    transform: translateY(20px); 
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-.fade-in.appear { 
-    opacity: 1; 
-    transform: translateY(0); 
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* 統一的小圓點列表 */
 .custom-dot-list {
-    list-style: none; 
+    list-style: none;
     padding-left: 0;
     margin: 0;
 }
 .custom-dot-list li {
     position: relative;
-    padding-left: 1.2rem; 
+    padding-left: 1.2rem;
     margin-bottom: 0.6rem;
     color: var(--text-muted);
 }
@@ -75,10 +75,10 @@ html, body {
     content: '';
     position: absolute;
     left: 0;
-    top: 0.65rem; 
-    width: 6px; 
+    top: 0.65rem;
+    width: 6px;
     height: 6px;
-    background-color: var(--text-muted); 
+    background-color: var(--text-muted);
     border-radius: 50%;
 }
 
@@ -86,8 +86,8 @@ html, body {
    3. 導覽列與手機選單 (Navbar)
    ========================================================================== */
 .navbar {
-    position: fixed; 
-    top: 0; 
+    position: fixed;
+    top: 0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(5px);
@@ -95,33 +95,33 @@ html, body {
     z-index: 1000;
 }
 .nav-container {
-    max-width: 1200px; 
-    margin: 0 auto; 
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 1.2rem 2rem;
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
-.logo { 
-    font-size: 1.5rem; 
-    font-weight: 700; 
-    color: var(--primary-navy); 
-    text-decoration: none; 
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    text-decoration: none;
 }
-.nav-links { 
-    list-style: none; 
-    display: flex; 
-    gap: 1.5rem; 
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
 }
-.nav-links a { 
-    text-decoration: none; 
-    color: var(--text-main); 
-    font-size: 0.95rem; 
-    transition: color 0.3s; 
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    transition: color 0.3s;
 }
-.nav-links a:hover { 
-    color: var(--primary-navy); 
-    font-weight: 500; 
+.nav-links a:hover {
+    color: var(--primary-navy);
+    font-weight: 500;
 }
 
 .menu-toggle {
@@ -134,7 +134,7 @@ html, body {
 @media (max-width: 768px) {
     .menu-toggle { display: block; }
     .nav-links {
-        display: none; 
+        display: none;
         position: absolute;
         top: 70px;
         left: 0;
@@ -228,12 +228,12 @@ html, body {
 }
 .project-card {
     border-radius: 8px; overflow: hidden; height: 100%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 .project-img-placeholder {
     height: 200px; background-color: #E2E8F0;
@@ -260,12 +260,12 @@ html, body {
 body.modal-open { overflow: hidden; } /* 鎖定背景滾動 */
 
 .modal {
-    display: none; 
+    display: none;
     position: fixed; z-index: 2000; left: 0; top: 0;
-    width: 100vw; height: 100vh; 
-    overflow-x: hidden; overflow-y: auto; 
-    background-color: rgba(0,0,0,0.5); 
-    backdrop-filter: blur(3px); 
+    width: 100vw; height: 100vh;
+    overflow-x: hidden; overflow-y: auto;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
     opacity: 0; transition: opacity 0.3s ease;
 }
 .modal.show { display: block; opacity: 1; }
@@ -273,7 +273,7 @@ body.modal-open { overflow: hidden; } /* 鎖定背景滾動 */
 .modal-content {
     background-color: var(--bg-white);
     margin: 5% auto; padding: 2.5rem; border-radius: 12px;
-    width: 90%; max-width: 800px; max-height: 85vh; 
+    width: 90%; max-width: 800px; max-height: 85vh;
     overflow-y: auto; overflow-x: hidden;
     position: relative;
     transform: translateY(-30px); transition: transform 0.3s ease;
@@ -297,7 +297,7 @@ body.modal-open { overflow: hidden; } /* 鎖定背景滾動 */
 .close-btn:hover { color: var(--text-main); }
 
 .expand-btn {
-    position: absolute; top: 1.5rem; right: 4.2rem; 
+    position: absolute; top: 1.5rem; right: 4.2rem;
     font-size: 1.2rem; color: var(--text-muted); background: none; border: none;
     cursor: pointer; transition: color 0.2s;
     display: flex; align-items: center; justify-content: center;
@@ -311,16 +311,16 @@ body.modal-open { overflow: hidden; } /* 鎖定背景滾動 */
 .modal-body ul { margin-left: 1.5rem; margin-bottom: 1rem; }
 
 /* 強制 Modal 內的段落與列表文字使用較深的文字顏色，保持一致性 */
-.modal-body p, 
-.modal-body li, 
-.modal-body .custom-dot-list li { 
-    color: #4A5568 !important; 
-    font-size: 0.95rem; 
-    line-height: 1.8; 
+.modal-body p,
+.modal-body li,
+.modal-body .custom-dot-list li {
+    color: #4A5568 !important;
+    font-size: 0.95rem;
+    line-height: 1.8;
 }
 
 /* 針對重點標示 (strong, b) 的舒適淺紅色 */
-.modal-body strong, 
+.modal-body strong,
 .modal-body b {
     color: #D95A53 !important; /* 舒適的珊瑚紅/磚紅色 */
     font-weight: 600;          /* 稍微加粗增加對比 */
@@ -338,12 +338,63 @@ body.modal-open { overflow: hidden; } /* 鎖定背景滾動 */
     display: block; overflow-x: auto; /* 表格太寬時可在內部水平滾動 */
 }
 
+/* ===== 彈窗跑版修正（新增）===== */
+
+/* 強制內文單欄堆疊，避免被任何外部樣式或行內樣式影響而跑成多欄位 */
+.modal-body {
+    column-count: 1 !important;
+    columns: auto !important;
+}
+
+/* 內文圖片一律獨立成一整行、置中，不要文繞圖（蓋掉貼上圖片時常見的行內 float 樣式）*/
+.modal-body img {
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 480px;
+    margin: 0 auto 1.5rem !important;
+}
+
+/* 表格外層的可捲動容器（JS 會自動把 .info-table 包進來），手機上改成左右滑動 */
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem 0 1.5rem;
+    border-radius: 8px;
+}
+.table-scroll .info-table {
+    margin: 0;
+    min-width: 560px; /* 欄位維持可讀寬度，螢幕不夠寬就滑動查看 */
+}
+
 /* 全螢幕模式 */
 .modal-content.fullscreen {
     width: 100vw !important; max-width: 100vw !important;
     height: 100vh !important; max-height: 100vh !important;
     margin: 0 !important; border-radius: 0 !important;
     padding: 3rem 4rem !important;
+}
+
+/* 4. 彈窗最下方的「關閉」按鈕（手機尤其需要，不用滑回最上面） */
+.close-btn-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin: 2.5rem 0 0.5rem;
+    padding: 0.9rem;
+    background: var(--bg-light, #f2f2f2);
+    color: var(--primary-navy, #1a2b4c);
+    border: 1px solid var(--border-color, #e2e2e2);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+}
+.close-btn-bottom:hover {
+    background: var(--border-color, #e2e2e2);
 }
 
 /* ==========================================================================
@@ -367,17 +418,17 @@ body.modal-open { overflow: hidden; } /* 鎖定背景滾動 */
    ========================================================================== */
 .contact-container { text-align: center; }
 .contact-container p { margin-bottom: 2rem; }
-footer { 
-    text-align: center; padding: 2rem; 
-    background-color: var(--primary-navy); 
-    color: rgba(255,255,255,0.7); font-size: 0.9rem; 
+footer {
+    text-align: center; padding: 2rem;
+    background-color: var(--primary-navy);
+    color: rgba(255,255,255,0.7); font-size: 0.9rem;
 }
 /* ==========================================================================
    10. 圖片放大 Lightbox
    ========================================================================== */
 .lightbox {
-    display: none; 
-    position: fixed; 
+    display: none;
+    position: fixed;
     z-index: 3000; /* 層級設定比一般 Modal 的 2000 還高 */
     left: 0; top: 0; width: 100vw; height: 100vh;
     background-color: rgba(0,0,0,0.85); /* 深色半透明背景 */
