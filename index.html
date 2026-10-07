@@ -608,7 +608,7 @@
                 <div class="media-container">
                     <h4>🎬 操作示範影片</h4>
                     <div class="video-wrapper">
-                        <video controls width="100%" poster="assets/img/semi-cover.jpg" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <video controls width="100%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                             <source src="assets/video/BI.mp4" type="video/mp4">
                             您的瀏覽器不支援影片播放標籤，建議使用 Chrome 或 Edge。
                         </video>
@@ -762,8 +762,9 @@
               <!-- 圖 4 -->
                  <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
                    <img src="assets/img/unagree.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：條件審核不通過且產出補件內容" style="width: 100%; height: 100%; object-fit: cover;">
-                      </div>           
-                        
+                      </div>
+
+                </div>
                 </div>
                 <!-- 影片區塊結束 -->
 
@@ -1142,9 +1143,9 @@
                     <h4>🔗 系統連結</h4>
                     <p><a href="https://hsusy27.github.io/money/" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此前往體驗 AIRIC 費用管理系統</a></p>
                 </div>
-                
-                      </div><!-- 加回來的圖片展示區塊 -->
-                    <div class="media-container" style="margin-top: 2rem;">
+
+                <!-- 加回來的圖片展示區塊 -->
+                <div class="media-container" style="margin-top: 2rem;">
                     <h4>📸 介面展示</h4>
                        <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
         
@@ -1153,11 +1154,14 @@
                        <img src="assets/img/money1.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：總表畫面" style="width: 100%; height: 100%; object-fit: cover;">
                        </div>
 
-                       <!-- 圖 2 -->
+                       <!-- 圖 2：待補 — 把金流快照報表截圖存成英文檔名（例如 money2.png）上傳到 assets/img/，
+                            再把下面這行 src 換成正確檔名，並拿掉外層的註解符號即可顯示 -->
+                       <!--
                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                       <img src="assets/img/金流快照報表檔名.jpg" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：應收應付金流快照報表" style="width: 100%; height: 100%; object-fit: cover;">
+                       <img src="assets/img/money2.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：應收應付金流快照報表" style="width: 100%; height: 100%; object-fit: cover;">
                        </div>
-        
+                       -->
+
                          </div>
                               </div>
                      <!-- 圖片區塊結束 -->
@@ -1524,7 +1528,7 @@
                         
                         <!-- 圖 1 -->
                         <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                            <img src="assets/img/mbitaiwan.png" class="zoomable-img" onclick="openLightbox(this)" alt="全台門市分佈" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="assets/img/bitaiwan.png" class="zoomable-img" onclick="openLightbox(this)" alt="全台門市分佈" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
 
                         
@@ -1751,6 +1755,9 @@
                  <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
                    <img src="assets/img/i14661108.png" class="zoomable-img" onclick="openLightbox(this)" alt="專題內容" style="width: 100%; height: 100%; object-fit: cover;">
                       </div>
+                 </div>
+            </div>
+
                 <h4>一、專題概述</h4>
                 <p>就讀長榮大學醫務管理學系期間的畢業專題，針對門診雲端藥歷系統使用率偏低的現象，以 4M 分析法拆解可能的導入瓶頸，並從中歸納出提升查詢率的改善方向。</p>
 
@@ -1759,9 +1766,6 @@
 
                 <h4>三、核心發現</h4>
                 <p>分析後確立「使用者體驗」為核心的系統思維：系統功能完整不代表會被使用，查詢流程是否貼合醫護人員既有的看診節奏，往往才是決定雲端藥歷是否被實際採用的關鍵因素。</p>
-
-
-                </p>
 
             </div>
         </div>
@@ -1798,6 +1802,39 @@
                 document.getElementById('lightbox-img').src = "";
             }, 300);
         }
+    </script>
+
+    <!-- 彈窗跑版修正：自動幫每個彈窗加上「表格捲動容器」與「最下方關閉鈕」 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // 1. 把每個 .info-table 包進可左右捲動的容器
+            document.querySelectorAll('.modal-body table').forEach(function (table) {
+                if (table.parentElement.classList.contains('table-scroll')) return;
+                var wrapper = document.createElement('div');
+                wrapper.className = 'table-scroll';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            });
+
+            // 2. 在每個彈窗內容最下方加上「關閉」按鈕
+            document.querySelectorAll('.modal .modal-content').forEach(function (content) {
+                if (content.querySelector('.close-btn-bottom')) return;
+
+                var modalEl = content.closest('.modal');
+                if (!modalEl || !modalEl.id) return;
+
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'close-btn-bottom';
+                btn.innerHTML = '<i class="fa-solid fa-xmark"></i> 關閉';
+                btn.addEventListener('click', function () {
+                    closeModal(modalEl.id);
+                });
+                content.appendChild(btn);
+            });
+
+        });
     </script>
 </body>
 </html>
