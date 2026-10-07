@@ -827,7 +827,6 @@
                         </ul>
                         這是典型的「規則引擎 + AI 引擎」混合式(Hybrid)設計,各司其職,避免所有事情都丟給 AI 造成成本高、不穩定、或都用規則造成沒有彈性。
                     </li>
-                    <li><strong>樣式(CSS)：</strong>Tailwind CSS,已由 CDN 即時編譯改為 CLI 本機建置的正式版,减少執行期效能開銷與外部依賴。</li>
                     <li><strong>模組化：</strong>HTML(結構)、app.js(邏輯)、style.css(自訂樣式)、tailwind.css(工具類樣式分離),方便日後維護與版本控管。</li>
                 </ul>
 
@@ -849,16 +848,8 @@
                             <td>應徵者資料不會被上傳到「系統自己的」伺服器或資料庫,降低集中式資料庫被駭而大量外洩的風險。</td>
                         </tr>
                         <tr>
-                            <td>去識別化功能內建</td>
-                            <td>提供人資在資料外流通(如寄送、留存副本)前,先行遮蔽個資的手段。</td>
-                        </tr>
-                        <tr>
                             <td>API Key 需自行設定,不寫死在程式碼裡</td>
                             <td>避免金鑰被寫在原始碼中而隨程式碼外流(例如上傳到公開的 GitHub)。</td>
-                        </tr>
-                        <tr>
-                            <td>已移除 Tailwind CDN 即時編譯</td>
-                            <td>減少對外部 CDN 的執行期依賴,降低「CDN 被竄改導致注入惡意程式碼」的攻擊面之一。</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1134,7 +1125,7 @@
             </button>
             <span class="close-btn" onclick="closeModal('modal-4')"><i class="fa-solid fa-xmark"></i></span>
             <div class="modal-header">
-                <h2>AIRIC 費用管理系統</h2>
+                <h2>費用管理系統</h2>
                 <p>純前端架構的跨月沖帳與歷年對帳工具，解決主管多來源經費墊付核銷痛點，並提供可選式 Firebase 雲端同步的漸進升級路徑。</p>
             </div>
             <div class="modal-body">
