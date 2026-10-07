@@ -480,7 +480,7 @@
 
                 <div class="project-card fade-in" onclick="openModal('modal-7')" style="background: var(--bg-light); cursor: pointer;">
                     <div class="project-img-placeholder" style="overflow: hidden; padding: 0;">
-                        <img src="assets/img/todo.png" alt="會議記錄轉錄與自動整理工具封面" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="assets/img/meetinggo.png" alt="會議記錄轉錄與自動整理工具封面" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="project-info">
                         <h3>會議記錄轉錄與自動整理工具</h3>
@@ -750,10 +750,23 @@
                 <div class="media-container" style="margin-top: 2rem;">
                     <h4>📸 介面與功能展示</h4>
                     <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                        <div class="gallery-item" style="background: var(--bg-light); height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; border: 1px solid var(--border-color);">圖 1：一鍵上傳履歷與 PDF 解析畫面</div>
-                        <div class="gallery-item" style="background: var(--bg-light); height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; border: 1px solid var(--border-color);">圖 2：Gemini API 語意分析比對結果</div>
-                        <div class="gallery-item" style="background: var(--bg-light); height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; border: 1px solid var(--border-color);">圖 3：自動產製聘任公文草稿預覽</div>
-                    </div>
+               <!-- 圖 1 -->
+                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                   <img src="assets/img/list.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：條件審核" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>
+                <!-- 圖 2 -->
+                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                   <img src="assets/img/agree.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：條件審核通過" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>          
+                <!-- 圖 3 -->
+                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                   <img src="assets/img/ok.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：條件審核通過且產出聘任公文" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div> 
+              <!-- 圖 4 -->
+                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                   <img src="assets/img/unagree.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：條件審核不通過且產出補件內容" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>           
+                        
                 </div>
                 <!-- 影片區塊結束 -->
 
@@ -1230,7 +1243,7 @@
 
                         <!-- 圖 2 -->
                         <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                            <img src="assets/img/你的座位圖檔名.jpg" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：動態座位圖與分機搜尋面板" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="assets/img/seat.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：動態座位圖與分機搜尋面板" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
 
                     </div>
@@ -1373,7 +1386,7 @@ airic-site/
             </button>
             <span class="close-btn" onclick="closeModal('modal-6')"><i class="fa-solid fa-xmark"></i></span>
             <div class="modal-header">
-                <h2>yuan — 個人工作待辦與日誌匯出系統</h2>
+                <h2>個人工作待辦與日誌匯出系統</h2>
                 <p>專為高頻率工作彙報設計的輕量化待辦工具，支援加密儲存與自動化 PDF 產製，讓進度追蹤與日誌回報無縫接軌。</p>
             </div>
             <div class="modal-body">
@@ -1454,6 +1467,20 @@ airic-site/
                 <p>將會議錄音自動轉換為逐字稿、結構化會議記錄與待辦事項，已在本機實際處理過真實工作會議錄音並產出可用結果。</p>
             </div>
             <div class="modal-body">
+            <!-- 加回來的圖片展示區塊 -->
+                <div class="media-container">
+                    <h4>架構流程圖</h4>
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        
+                        <!-- 圖 1 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/meeting_notes_pipeline_blue.png" class="zoomable-img" onclick="openLightbox(this)" alt="架構流程圖" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+
+                        
+                    </div>
+                </div>
+                <!-- 圖片區塊結束 -->                
 
                 <h4>一、專案概述</h4>
                 <p>一個將會議錄音自動轉換為逐字稿、結構化會議記錄與待辦事項的工具。使用者上傳錄音檔，程式自動切段並交由 Gemini API 轉錄，再整理成含主題分類、重點、細節的巢狀會議記錄，並萃取待辦事項（負責人、任務、期限）。</p>
@@ -1526,6 +1553,20 @@ airic-site/
             </div>
             <div class="modal-body">
 
+            <!-- 加回來的圖片展示區塊 -->
+                <div class="media-container">
+                    <h4>📸 BI展示</h4>
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        
+                        <!-- 圖 1 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/mbitaiwan.png" class="zoomable-img" onclick="openLightbox(this)" alt="全台門市分佈" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+
+                        
+                    </div>
+                </div>
+                <!-- 圖片區塊結束 -->                  
                 <div class="media-container">
                     <h4>🔗 系統連結</h4>
                     <p>互動儀表板（Tableau Public）：<a href="https://public.tableau.com/app/profile/shihyuan.hsu/viz/_17911135071140/1" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此查看互動儀表板</a></p>
