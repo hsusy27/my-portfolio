@@ -780,19 +780,11 @@
                         </ul>
                     </li>
                 </ul>
-
-                <p><strong>去識別化引擎(🔒 快速去識別化)</strong></p>
-                <ul>
-                    <li>一鍵掃描履歷文字,用正規表達式規則自動遮蔽 7 大類個資：姓名、身分證/居留證/健保卡號、電話與手機、Email、通訊地址、出生年月日、LINE/社群帳號。</li>
-                    <li>可個別開關要遮蔽的類別(進階設定)。</li>
-                    <li>遮蔽完成後會顯示「本次遮蔽了什麼、各幾筆」的摘要,方便人資在下載前人工複查。</li>
-                    <li>可將去識別化後的文字下載成 .txt 檔,單獨留存或提供給其他審查人員,不含個資。</li>
-                </ul>
                 
                 <p><strong>AI 資格核對(開始執行資格核對與生成公文)</strong></p>
                 <ul>
                     <li>把「門檻規範」+「應徵者資料」+「附件圖檔/PDF」一起包成結構化的 Prompt,送給 Gemini API。</li>
-                    <li>AI 被要求：嚴格對照門檻逐項判斷是否「完全符合」;若應徵者仍在職會自動換算至今年資;人資手動註記的年資可直接採信;掃描附件要親自用視覺能力閱讀。</li>
+                    <li>AI 被要求：嚴格對照門檻逐項判斷是否「完全符合」;若應徵者仍在職會自動換算至今年;人資手動註記的年資可直接採信;掃描附件要親自用視覺能力閱讀。</li>
                     <li>AI 回傳結構化 JSON(是否通過 / 理由標題 / 詳細理由 / 公文文字),前端依此顯示核對結果矩陣,並自動切到對應公文。</li>
                 </ul>
                 
@@ -1263,8 +1255,7 @@
                 <p><strong>互動式座位圖</strong></p>
                 <ul>
                     <li>兩張樓層平面圖以 SVG 手繪內嵌於 index.html，採 viewBox="0 0 1000 520" 的相對座標系，任何螢幕尺寸都等比縮放，不需準備多份圖檔。</li>
-                    <li>每個座位卡顯示姓名、英文名、分機／桌號，左側色線對應所屬分組（高醫師團隊、法規、NLP、影像、系統、行政、行銷、訊號、醫資組、PM 共 10 組）。</li>
-                    <li>人員離職時把該筆改成 { empty: true, ext: '109' } 即成空位，新人報到再改回來，不需要重畫圖。</li>
+                    <li>每個座位卡顯示姓名、英文名、分機／桌號，左側色線對應所屬分組（核醫、法規、NLP、影像、系統、行政、行銷、訊號、醫資組、PM 共 10 組）。</li>
                     <li>分組代表色經過調整：原簡報圖例的粉紅 #EAD1DC、淡藍 #B4C7E7、純黃 #FFFF00 縮成細色線後幾乎辨識不出來，實作時統一加深，屬於「從簡報搬到網頁時必須重新做的視覺決策」。</li>
                 </ul>
 
@@ -1367,10 +1358,7 @@ airic-site/
                             <td>勾選進度不上傳</td>
                             <td>待辦完成狀態留在使用者本機，系統本身不蒐集任何行為資料、無追蹤碼、無 cookie。</td>
                         </tr>
-                        <tr>
-                            <td>文件中主動揭露限制</td>
-                            <td>README 明確寫出「這道鎖擋得住什麼、擋不住什麼」，而非讓使用單位誤以為已經很安全。</td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -1447,10 +1435,7 @@ airic-site/
                             <td>列印層樣式隔離 (Print Layer Isolation)</td>
                             <td>將網頁 UI 樣式與 PDF 報表樣式完美分離，確保匯出的文件具備極高的正式感與專業度，絕不會印出多餘的按鈕與選單。</td>
                         </tr>
-                        <tr>
-                            <td>輕量無相依性</td>
-                            <td>開箱即用，無須安裝額外軟體，利用 GitHub Pages 託管即可隨時隨地開啟使用，不占用系統與伺服器資源。</td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -1483,9 +1468,7 @@ airic-site/
     ↓ 合併逐字稿
     ↓ Gemini API 整理（結構化提示詞）
 會議記錄（主題／重點／細節）＋ 待辦事項（負責人／任務／期限）</div>
-                <div class="badge-row">
-                    <span>Python</span><span>Google Gemini API (google-genai SDK)</span><span>ffmpeg</span><span>python-dotenv</span>
-                </div>
+
 
                 <h4>四、關鍵設計決策</h4>
 
@@ -1509,14 +1492,11 @@ airic-site/
                 <ul class="custom-dot-list">
                     <li>API 金鑰透過環境變數讀取（<code>os.getenv("GEMINI_API_KEY")</code>），不寫死在程式碼裡，程式碼本身不含任何機密資訊</li>
                     <li><code>.gitignore</code> 排除 <code>.env</code>、所有錄音格式（mp3／m4a／wav）與 <code>output/</code> 輸出資料夾，避免金鑰與會議內容被提交進版本控制</li>
-                    <li>推送到 GitHub（公開儲存庫）前，採取手動檢查流程：先用 <code>git status</code>／<code>git ls-files</code> 確認「準備上傳的清單」不含敏感檔案，再執行 commit 與 push，push 完成後再到 GitHub 網頁肉眼複查一次檔案列表，作為最後一道防線</li>
-                    <li>這個「先檢查、不先上傳」的習慣，是從一開始就刻意建立的流程，不是上傳後才補救</li>
                 </ul>
 
                 <h5>使用階段：資料流向與第三方處理</h5>
                 <ul class="custom-dot-list">
                     <li>錄音與逐字稿會上傳到 Google Gemini API 處理，屬於第三方雲端服務，不是地端運算</li>
-                    <li>因此在 README 中明確提醒：若用於公司會議，使用前應先確認所屬單位的資安規範是否允許將內容傳到外部服務，並建議機密會議使用付費額度</li>
                 </ul>
 
                 <hr class="section-divider">
@@ -1556,7 +1536,6 @@ airic-site/
                 <ul class="custom-dot-list">
                     <li><strong>資料管線：</strong>以 Python 撰寫 9 支腳本，一支只做一件事，上一支的輸出就是下一支的輸入（ETL 架構）。</li>
                     <li><strong>迭代開發：</strong>每一步先跑小範圍、檢查資料品質，再決定下一步；例如發現稅籍資料沒有星巴克門市後，改用 OpenStreetMap。</li>
-                    <li><strong>版本控制：</strong>Git 與 GitHub，以 .gitignore 排除原始大檔與含個資的檔案。</li>
                     <li><strong>視覺化：</strong>Tableau Public 五頁互動儀表板。</li>
                     <li><strong>AI 輔助：</strong>使用 AI 程式助理協助撰寫與除錯程式碼；研究問題設計、資料來源取捨、人工標註與結論判讀由我完成。</li>
                 </ul>
@@ -1574,7 +1553,7 @@ airic-site/
                     <li><strong>資料分散、店數不透明：</strong>品牌不公開完整門市資料，串接四種公開資料，建立可比較的門市與人口指標。</li>
                     <li><strong>店多不等於密度高：</strong>只看門市數，臺北市一定最多；換算每萬人門市數後，才看得出品牌跟著商辦人潮走。</li>
                     <li><strong>推噓不等於口碑：</strong>驗證發現 PTT 推噓代表「是否同意發文者」，改以留言內容判斷對品牌的態度，並把促銷文與體驗文分開計算。</li>
-                    <li><strong>免費、可重現：</strong>不依賴付費 API，任何人拿到程式與公開資料都能重跑出相同結果。</li>
+
                 </ul>
 
                 <hr class="section-divider">
@@ -1770,10 +1749,7 @@ airic-site/
                 <h4>三、核心發現</h4>
                 <p>分析後確立「使用者體驗」為核心的系統思維：系統功能完整不代表會被使用，查詢流程是否貼合醫護人員既有的看診節奏，往往才是決定雲端藥歷是否被實際採用的關鍵因素。</p>
 
-                <hr class="section-divider">
 
-                <p style="font-size: 0.9rem; color: var(--text-muted); font-style: italic;">
-                    這個專題的細節目前還在整理中——如果妳想補充當時的具體分析過程、數據或結論（例如 4M 各構面的發現、改善建議、成果），之後可以再把這個區塊補得跟其他專案一樣完整。
                 </p>
 
             </div>
