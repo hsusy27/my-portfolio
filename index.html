@@ -242,7 +242,7 @@
             <p class="subtitle">Hello, I'm</p>
             <h1>徐詩媛</h1>
             <h2 class="role">Front-End Developer & Data Enthusiast</h2>
-            <p class="description">具備醫療人工智慧領域行政與專案管理經驗，專注於透過 Python 處理數據，並以直覺的介面呈現。歡迎來到我的資管所推甄與求職作品集。</p>
+            <p class="description">具備醫療人工智慧領域行政與專案管理經驗，透過 Python 處理數據，並以直覺的介面呈現。歡迎來到我的資管所推甄與求職作品集。</p>
             <a href="#projects" class="btn-primary">查看作品</a>
         </div>
     </header>
@@ -627,7 +627,7 @@
                     <li><strong>Data Source Layer:</strong> yfinance API（股價）、FinMind API / MOPS（月營收）</li>
                     <li><strong>ETL & Processing Layer:</strong> etl_pipeline.py：擷取 → Pandas 向量化清洗</li>
                     <li><strong>Storage Layer:</strong> SQLite 星型模型：Dim_Company / Fact_Daily_Stock / Fact_Monthly_Revenue</li>
-                    <li><strong>BI Analytics & UI Layer:</strong> app.py：SQL 視窗函數運算 → CSS 客製注入 → Streamlit 儀表板</li>
+                    <li><strong>BI Analytics & UI Layer:</strong>SQL 視窗函數運算 → CSS 客製注入 → Streamlit 儀表板</li>
                 </ul>
 
                 <h5>資料庫模型（星型模型）</h5>
@@ -666,20 +666,20 @@
                     <li><strong>KPI 卡片：</strong>當月半導體總營收，以及上／中／下游三個子產業的營收加總，一眼看出巨觀產值分佈。</li>
                     <li><strong>動態趨勢圖（同一張圖兩種模式）：</strong>下拉選單可切換「全產業總營收趨勢」（依 sector 分色的折線圖）或「個股 K 線」；選到個股時,K 線圖疊加 20 日與 60 日均線,均線透過 SQL 視窗函數即時算好再畫,不在前端用 Pandas 另外算一次。</li>
                     <li><strong>產業代表性個股表：</strong>卡片化列表,每列有色塊縮寫圖示、公司名／代碼、產業位置、收盤價、當日漲跌幅、營收 YoY。</li>
-                    <li><strong>產業鏈產值結構占比（甜甜圈圖）：</strong>中空圓餅圖呈現四個產業區塊的營收占比,中心疊字顯示「100」,右側配色圖例逐項標示百分比。</li>
+                    <li><strong>產業鏈產值結構占比：</strong>中空圓餅圖呈現四個產業區塊的營收占比,中心疊字顯示「100」,右側配色圖例逐項標示百分比。</li>
                     <li><strong>市場焦點手風琴（Market Focus）：</strong>依產業分組,用 HTML &lt;details&gt;／&lt;summary&gt; 做成可展開收合的清單,預設展開「上游 IC 設計」,每組列出成分股的即時報價,不需要額外的 JS 互動套件。</li>
                 </ul>
                 <p><strong>個股技術分析頁（Stock Market）</strong></p>
                 <ul>
-                    <li>側邊欄下拉選擇個股後,顯示完整期間的 K 線圖（無時間滑桿,聚焦在圖表本身）。</li>
+                    <li>側邊欄下拉選擇個股後,顯示完整期間的 K 線圖。</li>
                 </ul>
 
                 <h5>4. 技術架構細節</h5>
                 <ul>
-                    <li><strong>資料存取層：</strong>query_db() 統一封裝 sqlite3.connect + pandas.read_sql_query,並用 @st.cache_data(ttl=600) 快取查詢結果 10 分鐘,避免每次互動（切換下拉選單）都重新打資料庫。</li>
-                    <li><strong>SQL 端運算優先：</strong>均線（AVG() OVER (ORDER BY date ROWS BETWEEN N PRECEDING AND CURRENT ROW)）與「取每檔股票最新一筆」（ROW_NUMBER() OVER (PARTITION BY stock_id ORDER BY date DESC)）都寫成 SQL 視窗函數,由資料庫引擎算完才回傳給 Python,而不是撈全部資料回來用迴圈或 Pandas 逐檔計算。</li>
-                    <li><strong>參數化查詢：</strong>個股查詢一律用 ? 佔位符搭配 params=(stock_id,) 傳入,不做字串拼接,天生避開 SQL Injection。</li>
-                    <li><strong>視覺層：</strong>Streamlit 原生元件（st.metric、st.plotly_chart）之外,大量用 st.markdown(..., unsafe_allow_html=True) 注入自訂 HTML/CSS,做出 Streamlit 預設樣式做不到的圓角卡片、徽章、跑馬燈、手風琴等「SaaS 感」介面。</li>
+                    <li><strong>資料存取層：</strong>query_db() 統一封裝 sqlite3.connect + pandas.read_sql_query,並用 @st.cache_data(ttl=600) 快取查詢結果 10 分鐘,避免每次互動都重新打資料庫。</li>
+                    <li><strong>SQL 端運算優先：</strong>均線與「取每檔股票最新一筆」都寫成 SQL 視窗函數,由資料庫引擎算完才回傳給 Python,而不是撈全部資料回來用迴圈或 Pandas 逐檔計算。</li>
+                    <li><strong>參數化查詢：</strong>個股查詢一律用 ? 佔位符搭配 params=(stock_id,) 傳入,不做字串拼接,避開 SQL Injection。</li>
+                    <li><strong>視覺層：</strong>Streamlit 原生元件之外,大量用 st.markdown注入自訂 HTML/CSS,做出 Streamlit 預設樣式做不到的圓角卡片、徽章、跑馬燈、手風琴等介面。</li>
                     <li><strong>色彩系統：</strong>SECTOR_COLOR_MAP 把四個產業分類固定對應到一組莫蘭迪色系色碼,同一套色碼同時用在折線圖、甜甜圖與清單色塊,確保全站視覺一致。</li>
                 </ul>
                 
@@ -698,19 +698,15 @@
                     <tbody>
                         <tr>
                             <td>個股查詢採參數化 SQL</td>
-                            <td>Fact_Daily_Stock WHERE stock_id = ? 用參數綁定,不是字串拼接,避免 SQL Injection。</td>
+                            <td>用參數綁定,不是字串拼接,避免 SQL Injection。</td>
                         </tr>
                         <tr>
                             <td>星型模型分離維度與事實</td>
                             <td>公司基本資料與逐日／逐月數據分表存放,更新股價不需要動到公司資料,降低資料異動時互相牽連的風險。</td>
                         </tr>
                         <tr>
-                            <td>查詢結果具快取機制</td>
-                            <td>ttl=600 避免短時間內重複查詢打爆資料庫、也降低外部 API 呼叫頻率超限的風險。</td>
-                        </tr>
-                        <tr>
                             <td>ETL 與 UI 分層</td>
-                            <td>資料擷取（etl_pipeline.py）與呈現（app.py）是獨立腳本,重新整理資料不需要重啟或改動前端程式。</td>
+                            <td>資料擷取與呈現是獨立腳本,重新整理資料不需要重啟或改動前端程式。</td>
                         </tr>
                         <tr>
                             <td>資料本質為公開資訊</td>
@@ -819,15 +815,14 @@
 
                 <h5>3. 技術架構</h5>
                 <ul>
-                    <li><strong>純前端(No Backend)：</strong>所有邏輯(HTML/CSS/JS)都在瀏覽器執行,不需要自己架設伺服器或資料庫,部署成本極低(可放在任何靜態網站空間)。</li>
+                    <li><strong>純前端(No Backend)：</strong>所有邏輯都在瀏覽器執行,不需要自己架設伺服器或資料庫,部署成本低(可放在靜態網站空間)。</li>
                     <li><strong>雙軌判斷邏輯：</strong>
                         <ul class="sub-list">
-                            <li><strong>正規表達式(Regex)</strong>—— 用於個資去識別化這種「格式固定、規則明確」的任務,快、免費、不用等網路。</li>
-                            <li><strong>Gemini API(LLM)</strong>—— 用於「語意理解」這種難用規則寫死的任務,例如判斷履歷內容是否「實質符合」某個模糊的資格條件、閱讀圖片辨識證照內容。</li>
+                            <li><strong>Gemini API</strong>—— 用於「語意理解」這種難用規則寫死的任務,例如判斷履歷內容是否「實質符合」某個模糊的資格條件、閱讀圖片辨識證照內容。</li>
                         </ul>
-                        這是典型的「規則引擎 + AI 引擎」混合式(Hybrid)設計,各司其職,避免所有事情都丟給 AI 造成成本高、不穩定、或都用規則造成沒有彈性。
+                        這是典型的「規則引擎 + AI 引擎」混合式設計,各司其職,避免所有事情都丟給 AI 造成成本高、不穩定、或都用規則造成沒有彈性。
                     </li>
-                    <li><strong>模組化：</strong>HTML(結構)、app.js(邏輯)、style.css(自訂樣式)、tailwind.css(工具類樣式分離),方便日後維護與版本控管。</li>
+                    <li><strong>模組化：</strong>HTML、app.js、style.css、tailwind.css,方便日後維護與版本控管。</li>
                 </ul>
 
                 <hr class="section-divider">
@@ -849,7 +844,7 @@
                         </tr>
                         <tr>
                             <td>API Key 需自行設定,不寫死在程式碼裡</td>
-                            <td>避免金鑰被寫在原始碼中而隨程式碼外流(例如上傳到公開的 GitHub)。</td>
+                            <td>避免金鑰被寫在原始碼中而隨程式碼外流。</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1167,12 +1162,12 @@
                     <li><strong>多維度經費與墊付管理：</strong>支援設定多個經費來源與不同墊付帳戶，每一筆支出均綁定「來源」與「墊付人」，確保金流軌跡清晰可查。</li>
                     <li><strong>跨月沖帳與對帳單系統：</strong>支出單據可隨時標記為「未核銷」、「審核中」、「已撥款」等狀態，系統會自動結算當月與歷年的應收、應付金額，徹底告別 Excel 算錯帳的風險。</li>
                     <li><strong>金流快照儀表板：</strong>即時將枯燥的帳務數據轉化為視覺化圖表，讓主管一眼看出各項計畫的剩餘額度與墊付水位。</li>
-                    <li><strong>漸進式雲端同步（Progressive Sync）：</strong>預設採離線單機模式（LocalStorage）以最高標準保障金流隱私；當有跨裝置或行政助理協作需求時，可隨時開啟 Firebase 模組進行安全的雲端同步。</li>
+                    <li><strong>漸進式雲端同步：</strong>預設採離線單機模式（LocalStorage）以最高標準保障金流隱私；當有跨裝置或行政助理協作需求時，可隨時開啟 Firebase 模組進行安全的雲端同步。</li>
                 </ul>
 
                 <h5>3. 技術架構</h5>
                 <ul>
-                    <li><strong>前端核心：</strong>純 HTML / CSS / JavaScript (ES6+) 構建，著重於組件模組化與單向資料流狀態管理。</li>
+                    <li><strong>前端核心：</strong>純 HTML / CSS / JavaScript構建，著重於組件模組化與單向資料流狀態管理。</li>
                     <li><strong>資料儲存與同步：</strong>預設依賴 LocalStorage（單機資料持久化）；內建 Firebase Firestore（可選的即時資料庫同步與身分驗證）。</li>
                     <li><strong>圖表與視覺：</strong>導入輕量化 Charting 函式庫，自訂符合企業識別色彩的圓餅圖與長條圖，維持介面專業度。</li>
                 </ul>
@@ -1189,16 +1184,16 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>離線優先 (Offline-First) 策略</td>
+                            <td>離線優先策略</td>
                             <td>預設環境下金流資料完全不經過任何外部伺服器，從物理層面根絕了機敏帳務資料在網路傳輸中外洩的隱患。</td>
                         </tr>
                         <tr>
                             <td>漸進式架構降低維運成本</td>
-                            <td>無伺服器 (Serverless) 設計，無需專責 IT 人員維護後端伺服器，對資源有限的行政單位是最具永續性的架構。</td>
+                            <td>無伺服器設計，無需專責 IT 人員維護後端伺服器，對資源有限的行政單位是最具永續性的架構。</td>
                         </tr>
                         <tr>
                             <td>XSS 防禦與資料過濾</td>
-                            <td>針對輸入的金流備註與金額進行嚴格的型別檢查與前端跳脫 (Escaping)，防止惡意指令碼注入破壞本地資料庫。</td>
+                            <td>針對輸入的金流備註與金額進行嚴格的型別檢查與前端跳脫，防止惡意指令碼注入破壞本地資料庫。</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1280,7 +1275,7 @@
                     <li>差勤請假、報帳等常用系統的捷徑，圖示採 Lucide icon name 設定；url 未填時點擊會跳提示，避免上線後出現無聲的死連結。</li>
                 </ul>
 
-                <p><strong>內容加密工具（build.html）</strong></p>
+                <p><strong>內容加密工具</strong></p>
                 <ul>
                     <li>獨立的離線工具頁：貼上／載入明文資料 → 輸入密碼 → 產生 data.enc.js 供上傳。</li>
                     <li>維護流程被刻意設計成「編輯明文 → 重新加密 → 只上傳密文」，明文檔由 .gitignore 擋住，避免誤推到公開 repo。</li>
@@ -1289,7 +1284,6 @@
                 <h5>3. 技術架構</h5>
                 <ul>
                     <li><strong>資料與呈現分離：</strong>全站文案、人員、規範、連結集中在單一 data.js，app.js 只負責渲染邏輯。維護者九成的工作只需要改 data.js，不必碰程式碼 —— 這是讓「非工程背景的行政同仁能接手維護」的關鍵設計。</li>
-                    <li><strong>客戶端加密：</strong>以 Web Crypto API 實作 AES-256-GCM 加密，金鑰由密碼經 PBKDF2-SHA256 迭代 25 萬次 推導。解密全在瀏覽器端完成，伺服器（GitHub Pages）自始至終只存放密文。</li>
                 </ul>
 
 
@@ -1313,10 +1307,6 @@
                         <tr>
                             <td>內容加密而非僅前端隱藏</td>
                             <td>常見的「假密碼」做法是用 JS 判斷密碼後 display: none，看原始碼就破功。此處內容是真的加密過的密文，沒有密碼者把 data.enc.js 整份下載走也只會拿到亂碼。</td>
-                        </tr>
-                        <tr>
-                            <td>金鑰推導有做強化</td>
-                            <td>PBKDF2-SHA256 迭代 25 萬次，大幅提高離線暴力破解的單次嘗試成本。</td>
                         </tr>
                         <tr>
                             <td>密碼不落地、不外傳</td>
@@ -1377,13 +1367,13 @@
                 <ul>
                     <li><strong>直覺式任務管理看板：</strong>採用清晰的狀態分類（待辦、進行中、已完成、卡關），支援任務的快速建立、編輯與狀態流轉，隨時掌握專案脈動。</li>
                     <li><strong>動態時間區間篩選：</strong>可一鍵過濾出「本週」、「本月」或「自訂區間」內活躍或完成的任務，精準對焦彙報範圍，告別手動撈資料的麻煩。</li>
-                    <li><strong>工作日誌 PDF 自動排版：</strong>內建專屬的列印樣式優化（Print CSS），點擊匯出即可將篩選後的任務清單轉化為乾淨、專業的 PDF 報告，直接做為附件發送或供 AI 輔助生成簡報草稿。</li>
+                    <li><strong>工作日誌 PDF 自動排版：</strong>內建專屬的列印樣式優化，點擊匯出即可將篩選後的任務清單轉化為乾淨、專業的 PDF 報告，直接做為附件發送或供 AI 輔助生成簡報草稿。</li>
                     <li><strong>隱私密碼鎖定：</strong>進入系統前需輸入自訂密碼解鎖，有效保護未公開的專案進度與個人工作軌跡。</li>
                 </ul>
 
                 <h5>3. 技術架構</h5>
                 <ul>
-                    <li><strong>前端框架：</strong>原生 JavaScript (Vanilla JS) 構建，無需依賴繁重的框架，追求極致的載入速度與跨平台相容性。</li>
+                    <li><strong>前端框架：</strong>原生 JavaScript 構建，無需依賴繁重的框架，追求極致的載入速度與跨平台相容性。</li>
                     <li><strong>報表產製引擎：</strong>利用 CSS <code>@media print</code> 進行列印排版控制，隱藏所有 UI 互動元素，只保留乾淨的報表網格，搭配瀏覽器原生轉存 PDF 功能，不需依賴笨重的外部 PDF 函式庫即可產出高質感報告。</li>
                     <li><strong>隱私防護層：</strong>將資料序列化後存入 LocalStorage，並搭配前端自訂加密驗證邏輯，確保只有知道密碼的使用者能解鎖並渲染畫面。</li>
                 </ul>
@@ -1400,11 +1390,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>資料零落地 (Zero-Data Retention on Server)</td>
+                            <td>資料零落地</td>
                             <td>個人的工作內容、專案機密、會議待辦等資訊完全儲存於本機瀏覽器中，不涉及任何外部 API 的傳輸與儲存，確保辦公室機敏資訊不外洩。</td>
                         </tr>
                         <tr>
-                            <td>列印層樣式隔離 (Print Layer Isolation)</td>
+                            <td>列印層樣式隔離</td>
                             <td>將網頁 UI 樣式與 PDF 報表樣式完美分離，確保匯出的文件具備極高的正式感與專業度，絕不會印出多餘的按鈕與選單。</td>
                         </tr>
 
@@ -1462,7 +1452,7 @@
                 <p>長會議一次送出容易因逾時或輸出長度上限而失敗。切成 30 分鐘一段，任一段失敗不會拖垮整體；目前版本採「全段成功才存檔」策略，避免產出殘缺逐字稿。</p>
 
                 <h5>2. 為什麼自動重試＋備用模型？</h5>
-                <p>開發過程中實際遇到 Gemini 新模型因需求量大頻繁回傳 503，也遇過模型版本下架（404）。因此設計了分層容錯：先對同一模型重試（處理暫時性忙碌或網路中斷），仍失敗則依序切換備用模型，而非直接讓整個流程中斷。這個設計是從真實踩坑中逐步補強出來的，不是預先設計好的。</p>
+                <p>開發過程中實際遇到 Gemini 新模型因需求量大頻繁回傳 503，也遇過模型版本下架404。因此設計了分層容錯：先對同一模型重試如處理暫時性忙碌或網路中斷，仍失敗則依序切換備用模型，而非直接讓整個流程中斷。這個設計是從真實踩坑中逐步補強出來的，不是預先設計好的。</p>
 
                 <h5>3. 為什麼不用 pydub？</h5>
                 <p>pydub 依賴 Python 3.13 已移除的 audioop 模組，在較新版本的 Python 上會直接出錯。改用 ffmpeg 子程序處理，更穩定也支援更多格式。</p>
@@ -1477,7 +1467,7 @@
                 <h5>開發階段：避免金鑰與錄音外洩</h5>
                 <ul class="custom-dot-list">
                     <li>API 金鑰透過環境變數讀取（<code>os.getenv("GEMINI_API_KEY")</code>），不寫死在程式碼裡，程式碼本身不含任何機密資訊</li>
-                    <li><code>.gitignore</code> 排除 <code>.env</code>、所有錄音格式（mp3／m4a／wav）與 <code>output/</code> 輸出資料夾，避免金鑰與會議內容被提交進版本控制</li>
+                    <li><code>.gitignore</code> 排除 <code>.env</code>、所有錄音格式（mp3／m4a／wav）與 <code>output</code> 輸出資料夾，避免金鑰與會議內容被提交進版本控制</li>
                 </ul>
 
                 <h5>使用階段：資料流向與第三方處理</h5>
@@ -1566,31 +1556,31 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="center">1 地理分布</td>
+                            <td class="center">地理分布</td>
                             <td>連鎖咖啡跟著白天的人走，而不是住的人</td>
                             <td>門市點地圖、區域占比、每萬人門市數前 10 名</td>
                             <td>中正區 2.36 間／萬人；星巴克中南部 41%、路易莎 29%</td>
                         </tr>
                         <tr>
-                            <td class="center">2 展店趨勢</td>
+                            <td class="center">展店趨勢</td>
                             <td>路易莎走過擴張、放緩、再加速三階段，新店重心往中南部移</td>
                             <td>逐年新設與累計組合圖、各時期區域占比</td>
                             <td>2025 年新設 42 間；北部占比 90% 降至 61%</td>
                         </tr>
                         <tr>
-                            <td class="center">3 品牌口碑</td>
+                            <td class="center">品牌口碑</td>
                             <td>Cama 最正面、星巴克中性、路易莎偏負面</td>
                             <td>淨情緒長條圖、主題熱力表、文字雲、爭議留言年度分布</td>
                             <td>淨情緒 +27、+5、-42</td>
                         </tr>
                         <tr>
-                            <td class="center">4 綜合洞察</td>
+                            <td class="center">綜合洞察</td>
                             <td>規模、口碑、促銷反應三者並不同步</td>
                             <td>品牌定位泡泡圖、促銷噓比例、品牌總覽表</td>
                             <td>路易莎優惠文噓比例 17.8%，星巴克 9.6%</td>
                         </tr>
                         <tr>
-                            <td class="center">5 方法與限制</td>
+                            <td class="center">方法與限制</td>
                             <td>資料來源、方法與限制</td>
                             <td>架構圖、資料來源、驗證、限制、資料倫理</td>
                             <td>詞典準確率 82%</td>
@@ -1756,7 +1746,7 @@
                 <p>以 4M 分析法作為問題拆解架構，分別從醫護人員操作習慣、系統介面與軟硬體設備、藥歷資料的完整性與正確性、以及門診作業流程與查詢動線四個面向，逐一檢視雲端藥歷系統在實際門診場域中未被充分使用的原因。</p>
 
                 <h4>三、核心發現</h4>
-                <p>分析後確立「使用者體驗」為核心的系統思維：系統功能完整不代表會被使用，查詢流程是否貼合醫護人員既有的看診節奏，往往才是決定雲端藥歷是否被實際採用的關鍵因素。</p>
+                <p>分析後確立「使用者體驗」為核心的系統思維，系統功能完整不代表會被使用，查詢流程是否貼合醫護人員既有的看診節奏，往往才是決定雲端藥歷是否被實際採用的關鍵因素。</p>
 
             </div>
         </div>
