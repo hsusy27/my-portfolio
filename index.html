@@ -622,7 +622,7 @@
                 <p>一般投資人或產業分析師在研究台灣半導體供應鏈時，常遇到三個問題：每日股價與每月營收資料（公開資訊觀測站 MOPS）散落在不同平台，難以即時交叉比對；市面看板多以單一個股呈現,缺乏「上游 IC 設計 → 中游晶圓代工 → 下游封測 → 設備材料」的供應鏈巨觀視角；介面資訊層級混亂，關鍵數字沒有被階層化呈現。</p>
                 <p>這個專案的目標是做出一套端到端的 BI 看板：資料從擷取、清洗、正規化建模到前端呈現全部自己掌控,而不是把現成資料丟進一張大表格就結束。</p>
                 
-                <h5>2. 系統架構（四層）</h5>
+                <h5>2. 系統架構</h5>
                 <ul>
                     <li><strong>Data Source Layer:</strong> yfinance API（股價）、FinMind API / MOPS（月營收）</li>
                     <li><strong>ETL & Processing Layer:</strong> etl_pipeline.py：擷取 → Pandas 向量化清洗</li>
@@ -659,8 +659,8 @@
                 </table>
                 <p>一張維度表對兩張事實表都是 1 : N，個股的股價與營收各自以自己的時間顆粒度（日／月）獨立累積,查詢時再依 stock_id 關聯。</p>
                 
-                <h5>3. 核心功能（依頁面模組）</h5>
-                <p><strong>首頁總覽（Home）</strong></p>
+                <h5>3. 核心功能</h5>
+                <p><strong>首頁總覽</strong></p>
                 <ul>
                     <li><strong>跑馬燈式報價條：</strong>橫向捲動顯示所有個股最新收盤價與漲跌幅徽章（紅漲綠跌，符合台股慣例配色）。</li>
                     <li><strong>KPI 卡片：</strong>當月半導體總營收，以及上／中／下游三個子產業的營收加總，一眼看出巨觀產值分佈。</li>
@@ -676,7 +676,6 @@
 
                 <h5>4. 技術架構細節</h5>
                 <ul>
-                    <li><strong>資料存取層：</strong>query_db() 統一封裝 sqlite3.connect + pandas.read_sql_query,並用 @st.cache_data(ttl=600) 快取查詢結果 10 分鐘,避免每次互動都重新打資料庫。</li>
                     <li><strong>SQL 端運算優先：</strong>均線與「取每檔股票最新一筆」都寫成 SQL 視窗函數,由資料庫引擎算完才回傳給 Python,而不是撈全部資料回來用迴圈或 Pandas 逐檔計算。</li>
                     <li><strong>參數化查詢：</strong>個股查詢一律用 ? 佔位符搭配 params=(stock_id,) 傳入,不做字串拼接,避開 SQL Injection。</li>
                     <li><strong>視覺層：</strong>Streamlit 原生元件之外,大量用 st.markdown注入自訂 HTML/CSS,做出 Streamlit 預設樣式做不到的圓角卡片、徽章、跑馬燈、手風琴等介面。</li>
