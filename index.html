@@ -513,6 +513,19 @@
                         </div>
                     </div>
                 </div> 
+
+                <div class="project-card fade-in" onclick="openModal('modal-10')" style="background: var(--bg-light); cursor: pointer;">
+                    <div class="project-img-placeholder" style="overflow: hidden; padding: 0;">
+                        <img src="assets/img/sqlbook.jpg" alt="SQL 查詢手帖" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="project-info">
+                        <h3>SQL 查詢手帖 </h3>
+                        <p>純前端靜態網站。</p>
+                        <div class="tags-container" style="margin-top: 1rem;">
+                            <span class="tag">React</span><span class="tag">Tailwind</span><span class="tag">CSS</span><span class="tag">sql.js</span><span class="tag">sqlite</span>
+                        </div>
+                    </div>
+                </div>  
                 
             </div>
         </div>
@@ -1751,7 +1764,67 @@
         </div>
     </div>
     
-    <!-- 圖片點擊放大專用 Lightbox (新增區塊) -->
+    <!-- 專案 10：SQL 查詢手帖 -->   
+    <div id="modal-10" class="modal">
+        <div class="modal-content">
+            <button class="expand-btn" onclick="toggleExpand(this)" title="點擊放大/還原視窗">
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </button>
+            <span class="close-btn" onclick="closeModal('modal-10')"><i class="fa-solid fa-xmark"></i></span>
+            <div class="modal-header">
+                <h2>SQL 查詢手帖</h2>
+                <p>互動式 SQL 工具書：把白話解釋、標準語法、可直接執行的範例與常見錯誤整理在同一個地方，並搭配闖關練習，讓人免安裝就能在瀏覽器裡邊讀邊練。</p>
+            </div>
+            <div class="modal-body">
+                <!-- 系統連結 -->
+                <div class="media-container">
+                    <h4>🔗網站連結</h4>
+                    <p><a href="https://hsusy27.github.io/sql-handbook/" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此前往體驗SQL 查詢手帖</a></p>
+                <h4>github連結</h4>
+                    <p><a href="https://github.com/hsusy27/sql-handbook" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;"></a></p>
+                </div>                
+                <!-- 影片展示區塊 -->
+                <div class="media-container">
+                    <h4>🎬 操作示範影片</h4>
+                    <div class="video-wrapper">
+                        <video controls width="100%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <source src="assets/video/sqlhandbook.mp4" type="video/mp4">
+                            您的瀏覽器不支援影片播放標籤，建議使用 Chrome 或 Edge。
+                        </video>
+                    </div>
+                </div>
+                <!-- 影片區塊結束 -->
+
+                <!-- 照片展示區塊 -->
+                <div class="media-container" style="margin-top: 2rem;">
+                    <h4>🖼️ 介面展示</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        <img src="assets/img/sqlhand01.jpg" alt="首頁：章節卡與「新手村訓練」下拉選單" loading="lazy" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <img src="assets/img/sqlhand02.jpg" alt="闖關練習：自動批改與 STAGE CLEAR" loading="lazy" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+                <!-- 照片區塊結束 -->
+
+                <h4 style="margin-top: 2rem;">一、建置緣由</h4>
+                <p>剛開始學習 SQL 基礎的過程中，我發現很多教學只有文字說明，或要先安裝資料庫才能練習。所以製作這份互動式工具書，把白話解釋、標準語法、直接執行的範例和常見錯誤整理在同一個地方，並加上闖關練習，讓人免安裝就能邊讀邊練。</p>
+
+                <h4 style="margin-top: 2rem;">二、建置方式</h4>
+                <p>純靜態前端網站，沒有後端也沒有串 API。內容資料寫在程式裡，SQL 則由瀏覽器內的 SQLite 引擎實際執行。</p>
+
+                <!-- 架構圖（不需要可整段刪除） -->
+                <img src="assets/img/sql-07-architecture.jpg" alt="SQL 查詢手帖網站架構圖" loading="lazy" style="width: 100%; margin-top: 1rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+
+                <h4 style="margin-top: 2rem;">三、SQLite 引擎（sql.js）</h4>
+                <ul>
+                    <li>透過 sql.js 將 SQLite 編譯成可在瀏覽器執行的版本。</li>
+                    <li>記憶體內資料庫，每位訪客各自獨立。</li>
+                    <li>重新整理即還原，無法改動網站內容。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<!-- 圖片點擊放大專用 Lightbox (新增區塊) -->
     <div id="image-lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img id="lightbox-img" class="lightbox-content" src="">
