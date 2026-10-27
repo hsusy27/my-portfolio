@@ -2,13 +2,13 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width， initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的作品集 | 履歷</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-                /* ===== 修正彈窗排版與按鈕大小（最終完美版） ===== */
+        /* ===== 修正彈窗排版與按鈕大小（最終完美版） ===== */
         /* 1. 將安全距離改加在「大標題 (h2)」上，放過小標題 (p) 讓它維持滿版 */
         .modal-header h2 {
             padding-right: 90px;
@@ -17,23 +17,23 @@
         @media (max-width: 768px) {
             /* 手機版的標題安全距離與字體微調 */
             .modal-header h2 {
-                padding-right: 75px !important; 
-                font-size: 1.35rem; 
+                padding-right: 75px !important;
+                font-size: 1.35rem;
                 line-height: 1.4;
             }
 
             /* 2. 強制重置按鈕容器，確保兩者長得一樣 */
-            .modal-content .close-btn， 
+            .modal-content .close-btn,
             .modal-content .expand-btn {
                 width: 32px !important;
                 height: 32px !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-                background: transparent !important; 
-                border: none !important;            
-                padding: 0 !important;              
-                top: 15px !important;               
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
+                top: 15px !important;
             }
 
             /* 3. 微調左右位置 */
@@ -45,12 +45,54 @@
             }
 
             /* 4. 強制縮小裡面的圖示 */
-            .modal-content .close-btn i， 
+            .modal-content .close-btn i,
             .modal-content .expand-btn i {
-                font-size: 16px !important; 
+                font-size: 16px !important;
             }
         }
-    
+
+        /* ===== 首頁封面：縮小兩行簡介的間距 ===== */
+        .hero .description {
+            margin-bottom: 0.4rem;
+        }
+        .hero .description:last-of-type {
+            margin-bottom: 2.5rem; /* 與下方「查看作品」按鈕保持距離 */
+        }
+
+        /* ===== 專業技能：並排正方形方框 ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);   /* 三欄並排 */
+            gap: 2rem;
+        }
+        .skill-category {
+            aspect-ratio: 1 / 1;                     /* 正方形 */
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .skill-category h3 {
+            color: var(--primary-navy);
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .skill-note {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+        .skill-category .custom-dot-list {
+            line-height: 2;
+        }
+        /* 平板以下改成單欄，取消正方形，避免文字被擠壓 */
+        @media (max-width: 900px) {
+            .skills-grid { grid-template-columns: 1fr; }
+            .skill-category { aspect-ratio: auto; }
+        }
+
         /* ===== 專案內文補充樣式 ===== */
         .info-table {
             width: 100%;
@@ -58,37 +100,37 @@
             margin: 1rem 0 1.5rem;
             font-size: 0.9rem;
         }
-        .info-table th， .info-table td {
-            border: 1px solid var(--border-color， #e2e2e2);
+        .info-table th, .info-table td {
+            border: 1px solid var(--border-color, #e2e2e2);
             padding: 0.7rem 0.9rem;
             text-align: left;
             vertical-align: top;
             line-height: 1.6;
         }
         .info-table th {
-            background: var(--bg-light， #f7f7f7);
-            color: var(--primary-navy， #1a2b4c);
+            background: var(--bg-light, #f7f7f7);
+            color: var(--primary-navy, #1a2b4c);
             font-weight: 600;
             white-space: nowrap;
         }
         .info-table td {
-            color: var(--text-muted， #6b6b6b);
-            background: var(--bg-white， #fff);
+            color: var(--text-muted, #6b6b6b);
+            background: var(--bg-white, #fff);
         }
         .info-table td.center {
             text-align: center;
             white-space: nowrap;
         }
         .modal-body h4 {
-            color: var(--primary-navy， #1a2b4c);
+            color: var(--primary-navy, #1a2b4c);
             margin-top: 2rem;
             margin-bottom: 0.75rem;
             font-size: 1.05rem;
-            border-left: 3px solid var(--primary-light， #4a6ea8);
+            border-left: 3px solid var(--primary-light, #4a6ea8);
             padding-left: 0.6rem;
         }
         .modal-body h5 {
-            color: var(--primary-navy， #1a2b4c);
+            color: var(--primary-navy, #1a2b4c);
             margin-top: 1.2rem;
             margin-bottom: 0.4rem;
             font-size: 0.95rem;
@@ -96,16 +138,16 @@
         }
         .modal-body p {
             line-height: 1.8;
-            color: var(--text-muted， #6b6b6b);
+            color: var(--text-muted, #6b6b6b);
             margin-bottom: 0.6rem;
         }
-        .modal-body ul， .modal-body ol {
+        .modal-body ul, .modal-body ol {
             line-height: 1.85;
-            color: var(--text-muted， #6b6b6b);
+            color: var(--text-muted, #6b6b6b);
             margin: 0 0 1rem 0;
             padding-left: 1.4rem;
         }
-        .modal-body ul li， .modal-body ol li {
+        .modal-body ul li, .modal-body ol li {
             margin-bottom: 0.4rem;
         }
         .modal-body ul.sub-list {
@@ -113,17 +155,17 @@
             margin-bottom: 0.6rem;
         }
         .modal-body strong {
-            color: var(--primary-navy， #1a2b4c);
+            color: var(--primary-navy, #1a2b4c);
         }
         .code-block {
-            background: var(--bg-light， #f7f7f7);
-            border: 1px solid var(--border-color， #e2e2e2);
+            background: var(--bg-light, #f7f7f7);
+            border: 1px solid var(--border-color, #e2e2e2);
             border-radius: 8px;
             padding: 1rem 1.2rem;
-            font-family: 'Consolas'， 'Courier New'， monospace;
+            font-family: 'Consolas', 'Courier New', monospace;
             font-size: 0.82rem;
             line-height: 1.7;
-            color: var(--text-muted， #555);
+            color: var(--text-muted, #555);
             overflow-x: auto;
             margin: 1rem 0 1.5rem;
             white-space: pre;
@@ -135,28 +177,28 @@
             margin: 0.5rem 0 1.2rem;
         }
         .badge-row span {
-            background: var(--bg-light， #f2f2f2);
-            color: var(--primary-navy， #1a2b4c);
+            background: var(--bg-light, #f2f2f2);
+            color: var(--primary-navy, #1a2b4c);
             font-size: 0.78rem;
             padding: 0.25rem 0.7rem;
             border-radius: 20px;
-            border: 1px solid var(--border-color， #e2e2e2);
+            border: 1px solid var(--border-color, #e2e2e2);
         }
         .section-divider {
             border: none;
-            border-top: 1px dashed var(--border-color， #ddd);
+            border-top: 1px dashed var(--border-color, #ddd);
             margin: 2rem 0;
         }
-        
+
         /* ===== 統一的精緻小圓點列表 ===== */
         .custom-dot-list {
-            list-style: none; 
+            list-style: none;
             padding-left: 0;
             margin: 0;
         }
         .custom-dot-list li {
             position: relative;
-            padding-left: 1.2rem; 
+            padding-left: 1.2rem;
             margin-bottom: 0.6rem;
             color: var(--text-muted);
         }
@@ -164,31 +206,31 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 0.65rem; 
-            width: 6px;   
+            top: 0.65rem;
+            width: 6px;
             height: 6px;
-            background-color: var(--text-muted); 
+            background-color: var(--text-muted);
             border-radius: 50%;
         }
 
         /* ===== 圖片放大 Lightbox 專用樣式 ===== */
         .lightbox {
-            display: none; 
-            position: fixed; 
+            display: none;
+            position: fixed;
             z-index: 3000; /* 確保層級高於 Modal */
             left: 0; top: 0; width: 100vw; height: 100vh;
-            background-color: rgba(0，0，0，0.85); 
+            background-color: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(5px);
             align-items: center; justify-content: center;
         }
         .lightbox.show {
-            display: flex; 
+            display: flex;
             animation: fadeIn 0.3s;
         }
         .lightbox-content {
             max-width: 90%; max-height: 90vh;
             border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0，0，0，0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             object-fit: contain;
         }
         .lightbox-close {
@@ -197,7 +239,7 @@
             cursor: pointer; transition: color 0.2s;
         }
         .lightbox-close:hover { color: #D95A53; }
-        
+
         /* 可點擊放大的圖片樣式 */
         .zoomable-img {
             cursor: zoom-in;
@@ -219,7 +261,7 @@
     <nav class="navbar" style="position: relative; z-index: 999; background: #fff;">
         <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;">
             <a href="#" class="logo">Portfolio.</a>
-            
+
             <!-- 手機版三條槓按鈕 -->
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
@@ -239,7 +281,7 @@
     <!-- 首頁橫幅 -->
     <header class="hero" id="home">
         <div class="hero-content fade-in">
-            <p class="subtitle">Hello， I'm</p>
+            <p class="subtitle">Hello, I'm</p>
             <h1>徐詩媛</h1>
             <h2 class="role"></h2>
             <p class="description">具備醫療人工智慧領域行政與專案管理經驗。</p>
@@ -263,7 +305,7 @@
     <section class="section bg-light" id="resume">
         <div class="container">
             <h2 class="wix-section-title" style="text-align: center;">學經歷</h2>
-            
+
             <div class="wix-timeline fade-in">
                 <div class="wix-timeline-item">
                     <div class="wix-left">
@@ -327,36 +369,32 @@
     <section class="section" id="skills">
         <div class="container">
             <h2 class="section-title">專業技能</h2>
-            <div class="skills-grid" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(250px， 1fr)); gap: 2rem;">
-                <div class="skill-category fade-in" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
-                    <h3 style="color: var(--primary-navy); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">專案與行政管理</h3>
-                    <ul class="custom-dot-list" style="line-height: 2;">
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>專案與行政管理</h3>
+                    <ul class="custom-dot-list">
                         <li>跨部門溝通與時程控管</li>
                         <li>專案預算與經費監督管理</li>
                         <li>大型展會與國際參訪安排</li>
-                        <li>辦公室系統與流程自動化優化</li>                    
+                        <li>辦公室系統與流程自動化優化</li>
                     </ul>
                 </div>
-                <div class="skill-category fade-in" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
-                    <h3 style="color: var(--primary-navy); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">
-                        前端開發與設計 <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-muted);">(學習中)</span>
-                    </h3>
-                    <ul class="custom-dot-list" style="line-height: 2;">
+                <div class="skill-category fade-in">
+                    <h3>前端開發與設計 <span class="skill-note">(學習中)</span></h3>
+                    <ul class="custom-dot-list">
                         <li>HTML / CSS / JavaScript</li>
                         <li>React & Tailwind CSS</li>
                         <li>UI/UX 介面設計</li>
                         <li>Streamlit 響應式開發</li>
                     </ul>
                 </div>
-                <div class="skill-category fade-in" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
-                    <h3 style="color: var(--primary-navy); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">
-                        數據分析與資料庫 <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-muted);">(學習中)</span>
-                    </h3>
-                    <ul class="custom-dot-list" style="line-height: 2;">
-                        <li>Python (Pandas， ETL 資料清理)</li>
+                <div class="skill-category fade-in">
+                    <h3>數據分析與資料庫 <span class="skill-note">(學習中)</span></h3>
+                    <ul class="custom-dot-list">
+                        <li>Python (Pandas, ETL 資料清理)</li>
                         <li>SQL / SQLite / DBeaver</li>
                         <li>商業智慧 (BI) 看板設計</li>
-                        <li>量化分析與問卷統計 (ANOVA， Pearson)</li>
+                        <li>量化分析與問卷統計 (ANOVA, Pearson)</li>
                     </ul>
                 </div>
             </div>
@@ -368,9 +406,9 @@
         <div class="container">
             <h2 class="section-title">證照與進修</h2>
             <p style="text-align: center; margin-bottom: 3rem; color: var(--text-muted);">點擊查看證照與詳細說明</p>
-            <div class="cert-grid" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(280px， 1fr)); gap: 2rem;">
+            <div class="cert-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
                 <!-- 證照 1~5 -->
-                <div class="cert-card fade-in" onclick="openModal('cert-modal-1')" style="background: var(--bg-white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0，0，0，0.05); display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; transition: transform 0.3s;">
+                <div class="cert-card fade-in" onclick="openModal('cert-modal-1')" style="background: var(--bg-white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; transition: transform 0.3s;">
                     <i class="fa-solid fa-database" style="font-size: 2rem; color: var(--primary-light);"></i>
                     <div>
                         <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">SQL for Data Science</h4>
@@ -378,7 +416,7 @@
                         <span class="tag" style="margin-top: 0.5rem; display: inline-block;"></span>
                     </div>
                 </div>
-                <div class="cert-card fade-in" onclick="openModal('cert-modal-2')" style="background: var(--bg-white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0，0，0，0.05); display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; transition: transform 0.3s;">
+                <div class="cert-card fade-in" onclick="openModal('cert-modal-2')" style="background: var(--bg-white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; transition: transform 0.3s;">
                     <i class="fa-solid fa-robot" style="font-size: 2rem; color: var(--primary-light);"></i>
                     <div>
                         <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">Google Ads AI & Claude 101</h4>
@@ -397,14 +435,14 @@
             <h2 class="section-title">精選專案與研究</h2>
             <p style="text-align: center; margin-bottom: 3rem; color: var(--text-muted);">點擊卡片查看詳細介紹、操作影片與介面截圖</p>
             <div class="project-grid">
-                
+
                 <div class="project-card fade-in" onclick="openModal('modal-1')" style="background: var(--bg-light); cursor: pointer;">
                     <div class="project-img-placeholder" style="overflow: hidden; padding: 0;">
                         <img src="assets/img/bi.jpg" alt="半導體 BI 儀表板封面" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="project-info">
                         <h3>台灣半導體產業鏈商業智慧看板</h3>
-                        <p>端到端的半導體產業 BI 看板，從外部 API 擷取股價與營收資料、以正規化資料庫建模，再用 SQL 視窗函數在資料層完成運算，最終以自訂 CSS 打造打造卡片式儀表板介。</p>
+                        <p>端到端的半導體產業 BI 看板，從外部 API 擷取股價與營收資料、以正規化資料庫建模，再用 SQL 視窗函數在資料層完成運算，最終以自訂 CSS 打造卡片式儀表板介面。</p>
                         <div class="tags-container" style="margin-top: 1rem;">
                             <span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">Streamlit</span>
                         </div>
@@ -423,7 +461,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="project-card fade-in" onclick="openModal('modal-3')" style="background: var(--bg-light); cursor: pointer;">
                   <div class="project-img-placeholder">
                      <img src="assets/img/paper.jpg" alt="問卷統計分析封面">
@@ -488,7 +526,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="project-card fade-in" onclick="openModal('modal-8')" style="background: var(--bg-light); cursor: pointer;">
                    <div class="project-img-placeholder" style="overflow: hidden; padding: 0;">
                        <img src="assets/img/coffee.jpg" alt="BI 數據分析作品：台灣連鎖咖啡品牌分析封面" style="width: 100%; height: 100%; object-fit: cover;">
@@ -501,7 +539,7 @@
                         </div>
                      </div>
                  </div>
-                
+
                 <div class="project-card fade-in" onclick="openModal('modal-9')" style="background: var(--bg-light); cursor: pointer;">
                     <div class="project-img-placeholder" style="overflow: hidden; padding: 0;">
                         <img src="assets/img/co.jpg" alt="大學專案：提升門診雲端藥歷查詢率封面" style="width: 100%; height: 100%; object-fit: cover;">
@@ -513,7 +551,7 @@
                             <span class="tag">4M 分析法</span>
                         </div>
                     </div>
-                </div> 
+                </div>
 
                 <div class="project-card fade-in" onclick="openModal('modal-10')" style="background: var(--bg-light); cursor: pointer;">
                     <div class="project-img-placeholder" style="overflow: hidden; padding: 0;">
@@ -526,8 +564,8 @@
                             <span class="tag">React</span><span class="tag">Tailwind</span><span class="tag">CSS</span><span class="tag">sql.js</span><span class="tag">sqlite</span>
                         </div>
                     </div>
-                </div>  
-                
+                </div>
+
             </div>
         </div>
     </section>
@@ -544,16 +582,16 @@
                 <h2>Coursera - SQL for Data Science</h2>
                 <p>結構化查詢語言與數據清理專業認證</p>
             </div>
-                   <div class="modal-body">
-                     <div class="cert-photo-gallery">
-                       <div class="cert-img-box">
+            <div class="modal-body">
+                <div class="cert-photo-gallery">
+                    <div class="cert-img-box">
                         <img src="assets/img/SQL.png" class="zoomable-img" onclick="openLightbox(this)" alt="SQL for Data Science 證書" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>放置 Coursera SQL 證書照片</div>'">
-                     </div>
-                  </div>
+                    </div>
+                </div>
 
                 <h4>課程簡介</h4>
                 <p>本課程由加州大學戴維斯分校 (UC Davis) 於 Coursera 平台開設，內容涵蓋關聯式資料庫 (RDBMS) 基礎概念、SQL 語法（SELECT、WHERE、JOIN、GROUP BY、Subqueries）以及資料清理與篩選之實務應用。</p>
-                
+
                 <h4>學習收穫與跨領域銜接</h4>
                 <ul>
                     <li><strong>建立關聯式資料庫的基礎觀念：</strong>身為跨領域學習者，過去處理行政資料主要依賴 Excel。透過這門課程，我建立了對關聯式資料庫 (RDBMS) 的基本認知，理解資料如何透過主鍵與外鍵進行關聯，並學會使用 JOIN 與子查詢處理跨表資料。</li>
@@ -575,7 +613,7 @@
             </div>
            <div class="modal-body">
                 <!-- 三張證書圖片展示 -->
-                <div class="cert-photo-gallery" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(180px， 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                <div class="cert-photo-gallery" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
                     <div class="cert-img-box">
                         <img src="assets/img/101.png" class="zoomable-img" onclick="openLightbox(this)" alt="Anthropic Claude 101 證書" style="width: 100%; border-radius: 6px; border: 1px solid var(--border-color);" onerror="this.outerHTML='<div class=&quot;modal-img&quot;>Anthropic Claude 101 證書照片</div>'">
                     </div>
@@ -589,7 +627,7 @@
 
                 <h4>證書簡介</h4>
                 <p>本區塊整合 Google「數位人才探索計畫」（Digital Marketing & AI for Generalists）與 Anthropic 官方「Claude 101」學習證明。內容涵蓋 Google Analytics 4 (GA4) 數據概念、生成式 AI 工具（Gemini、Claude、NotebookLM）之基礎應用與提示詞技巧，建立跨平台的生成式 AI 與數位數據理解。</p>
-                
+
                 <h4>學習收穫與應用</h4>
                 <ul>
                     <li><strong>理解數據驅動 (Data-Driven) 的分析思維：</strong>學習 Google Analytics 4 (GA4) 與數位行銷數據的基本概念，了解如何觀察使用者行為數據與流量來源，培養對線上互動數據的基礎敏感度。</li>
@@ -601,11 +639,11 @@
             </div>
         </div>
     </div>
-    
-    
+
+
 
     <!-- ================= 專案彈出視窗 (Project Modals) ================= -->
-    
+
     <!-- 專案 1：台灣半導體產業鏈商業智慧看板 -->
     <div id="modal-1" class="modal">
         <div class="modal-content">
@@ -618,11 +656,11 @@
                 <p>端到端的半導體產業 BI 看板，從外部 API 擷取股價與營收資料、以正規化資料庫建模，再用 SQL 視窗函數在資料層完成運算，最終以自訂 CSS 打造 SaaS 產品的卡片式儀表板。</p>
             </div>
             <div class="modal-body">
-                <!-- 加回來的影片與圖片展示區塊 -->
+                <!-- 影片展示區塊 -->
                 <div class="media-container">
                     <h4>🎬 操作示範影片</h4>
                     <div class="video-wrapper">
-                        <video controls width="100%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0，0，0，0.1);">
+                        <video controls width="100%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
                             <source src="assets/video/BI.mp4" type="video/mp4">
                             您的瀏覽器不支援影片播放標籤，建議使用 Chrome 或 Edge。
                         </video>
@@ -631,11 +669,11 @@
                 <!-- 影片區塊結束 -->
 
                 <h4 style="margin-top: 2rem;">一、系統功能說明</h4>
-                
+
                 <h5>1. 系統定位</h5>
                 <p>一般投資人或產業分析師在研究台灣半導體供應鏈時，常遇到三個問題：每日股價與每月營收資料（公開資訊觀測站 MOPS）散落在不同平台，難以即時交叉比對；市面看板多以單一個股呈現，缺乏「上游 IC 設計 → 中游晶圓代工 → 下游封測 → 設備材料」的供應鏈巨觀視角；介面資訊層級混亂，關鍵數字沒有被階層化呈現。</p>
                 <p>這個專案的目標是做出一套端到端的 BI 看板：資料從擷取、清洗、正規化建模到前端呈現全部自己掌控，而不是把現成資料丟進一張大表格就結束。</p>
-                
+
                 <h5>2. 系統架構</h5>
                 <ul>
                     <li><strong>Data Source Layer:</strong> yfinance API（股價）、FinMind API / MOPS（月營收）</li>
@@ -662,17 +700,17 @@
                         <tr>
                             <td>Fact_Daily_Stock</td>
                             <td class="center">事實表</td>
-                            <td>複合主鍵 (stock_id， date)，開高低收、成交量、每日漲跌幅</td>
+                            <td>複合主鍵 (stock_id, date)，開高低收、成交量、每日漲跌幅</td>
                         </tr>
                         <tr>
                             <td>Fact_Monthly_Revenue</td>
                             <td class="center">事實表</td>
-                            <td>複合主鍵 (stock_id， year_month)，月營收、MoM、YoY</td>
+                            <td>複合主鍵 (stock_id, year_month)，月營收、MoM、YoY</td>
                         </tr>
                     </tbody>
                 </table>
                 <p>一張維度表對兩張事實表都是 1 : N，個股的股價與營收各自以自己的時間顆粒度（日／月）獨立累積，查詢時再依 stock_id 關聯。</p>
-                
+
                 <h5>3. 核心功能</h5>
                 <p><strong>首頁總覽</strong></p>
                 <ul>
@@ -691,15 +729,15 @@
                 <h5>4. 技術架構細節</h5>
                 <ul>
                     <li><strong>SQL 端運算優先：</strong>均線與「取每檔股票最新一筆」都寫成 SQL 視窗函數，由資料庫引擎算完才回傳給 Python，而不是撈全部資料回來用迴圈或 Pandas 逐檔計算。</li>
-                    <li><strong>參數化查詢：</strong>個股查詢一律用 ? 佔位符搭配 params=(stock_id，) 傳入，不做字串拼接，避開 SQL Injection。</li>
+                    <li><strong>參數化查詢：</strong>個股查詢一律用 ? 佔位符搭配 params=(stock_id,) 傳入，不做字串拼接，避開 SQL Injection。</li>
                     <li><strong>視覺層：</strong>Streamlit 原生元件之外，大量用 st.markdown注入自訂 HTML/CSS，做出 Streamlit 預設樣式做不到的圓角卡片、徽章、跑馬燈、手風琴等介面。</li>
                     <li><strong>色彩系統：</strong>SECTOR_COLOR_MAP 把四個產業分類固定對應到一組莫蘭迪色系色碼，同一套色碼同時用在折線圖、甜甜圖與清單色塊，確保全站視覺一致。</li>
                 </ul>
-                
+
                 <hr class="section-divider">
 
                 <h4>二、資安與工程風險評估</h4>
-                
+
                 <h5></h5>
                 <table class="info-table">
                     <thead>
@@ -727,11 +765,11 @@
                         </tr>
                     </tbody>
                 </table>
-                
+
             </div>
         </div>
     </div>
-    
+
     <!-- 專案 2：新聘人員資格審核與簽呈生成系統 -->
     <div id="modal-2" class="modal">
         <div class="modal-content">
@@ -744,7 +782,7 @@
                 <p>純前端部署系統，採正規表達式與 Gemini API 雙軌架構，自動擷取資料產製公文，大幅縮短單案審核時間。</p>
             </div>
             <div class="modal-body">
-                <!-- 加回來的影片與圖片展示區塊 -->
+                <!-- 影片與圖片展示區塊 -->
                 <div class="media-container">
                     <h4>🎬 操作示範影片</h4>
                     <div class="video-wrapper">
@@ -755,33 +793,32 @@
                 </div>
                 <div class="media-container" style="margin-top: 2rem;">
                     <h4>📸 介面與功能展示</h4>
-                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(220px， 1fr)); gap: 1rem; margin-top: 1rem;">
-               <!-- 圖 1 -->
-                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/list.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：條件審核" style="width: 100%; height: 100%; object-fit: cover;">
-                      </div>
-                <!-- 圖 2 -->
-                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/agree.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：條件審核通過" style="width: 100%; height: 100%; object-fit: cover;">
-                      </div>          
-                <!-- 圖 3 -->
-                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/ok.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：條件審核通過且產出聘任公文" style="width: 100%; height: 100%; object-fit: cover;">
-                      </div> 
-              <!-- 圖 4 -->
-                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/unagree.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：條件審核不通過且產出補件內容" style="width: 100%; height: 100%; object-fit: cover;">
-                      </div>
-
-                </div>
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <!-- 圖 1 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/list.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：條件審核" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <!-- 圖 2 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/agree.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：條件審核通過" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <!-- 圖 3 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/ok.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 3：條件審核通過且產出聘任公文" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <!-- 圖 4 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/unagree.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 4：條件審核不通過且產出補件內容" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
                 </div>
                 <!-- 影片區塊結束 -->
 
                 <h4 style="margin-top: 2rem;">一、系統功能說明</h4>
-                
+
                 <h5>1. 系統定位</h5>
                 <p>這是一套給醫院/研究中心人資單位使用的新聘人員資格初審工具。傳統上，人資人員要「手動」把應徵者履歷內容，一條一條比對該職位的進用門檻(學歷、年資、成果件數等)，符合的話還要自己動手寫簽呈公文。這個系統把「比對」跟「寫公文」兩件事都自動化，人資只要輸入/上傳資料、按一個按鈕。</p>
-                
+
                 <h5>2. 核心功能(依操作流程)</h5>
                 <p><strong>STEP 1｜選擇職位與門檻規範</strong></p>
                 <ul>
@@ -800,14 +837,14 @@
                         </ul>
                     </li>
                 </ul>
-                
+
                 <p><strong>AI 資格核對(開始執行資格核對與生成公文)</strong></p>
                 <ul>
                     <li>把「門檻規範」+「應徵者資料」+「附件圖檔/PDF」一起包成結構化的 Prompt，送給 Gemini API。</li>
                     <li>AI 被要求：嚴格對照門檻逐項判斷是否「完全符合」;若應徵者仍在職會自動換算至今年;人資手動註記的年資可直接採信;掃描附件要親自用視覺能力閱讀。</li>
                     <li>AI 回傳結構化 JSON(是否通過 / 理由標題 / 詳細理由 / 公文文字)，前端依此顯示核對結果矩陣，並自動切到對應公文。</li>
                 </ul>
-                
+
                 <p><strong>公文自動生成</strong></p>
                 <ul>
                     <li><strong>若「符合資格」：</strong>自動產出符合台灣公文標準格式的簽呈草稿(主旨 / 說明一二三 / 擬辦)，包含學經歷敘述、成果亮點、經費支應來源等段落，人資只要微調後送簽即可，一個按鈕就能複製全文。</li>
@@ -840,7 +877,7 @@
                 <hr class="section-divider">
 
                 <h4>二、資安評估</h4>
-                
+
                 <h5></h5>
                 <table class="info-table">
                     <thead>
@@ -863,7 +900,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- 專案 3：AI工具便利性與使用依賴傾向之探索性研究 -->
     <div id="modal-3" class="modal">
         <div class="modal-content">
@@ -881,44 +918,42 @@
                     <h4>🔗完整專案內容</h4>
                     <p><a href="https://drive.google.com/file/d/1z3OCC4cgC3d_Y2oUm4AGbwq_nxjNb0Lm/view?usp=sharing" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此前往察看完整內容</a></p>
                 </div>
-                
-                <!-- 加回來的圖片展示區塊 -->
-            <div class="media-container">
-              <h4>📊 研究數據與統計圖表展示</h4>
-                 <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(220px， 1fr)); gap: 1rem; margin-top: 1rem;">
-        
-                 <!-- 圖 1 -->
-                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/demographic_charts.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：樣本特性" style="width: 100%; height: 100%; object-fit: cover;">
-                      </div>
-                 <!-- 圖 2 -->
-                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/reliability_chart.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：不同職業別依賴傾向 ANOVA 分析圖" style="width: 100%; height: 100%; object-fit: cover;">
-                      </div>
-                 <!-- 圖 3 -->
-                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/pearson.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 3：問卷構念間之關聯性熱圖" style="width: 100%; height: 100%; object-fit: cover;">
-                      </div>
-                 <!-- 圖 4 -->
-                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/analysis.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 4：職業別組間差異分析" style="width: 100%; height: 100%; object-fit: cover;">
-                      </div>
-                     
-                          </div>
-                             </div>
+
+                <!-- 圖片展示區塊 -->
+                <div class="media-container">
+                    <h4>📊 研究數據與統計圖表展示</h4>
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <!-- 圖 1 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/demographic_charts.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：樣本特性" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <!-- 圖 2 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/reliability_chart.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：不同職業別依賴傾向 ANOVA 分析圖" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <!-- 圖 3 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/pearson.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 3：問卷構念間之關聯性熱圖" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <!-- 圖 4 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/analysis.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 4：職業別組間差異分析" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
                 <!-- 圖片區塊結束 -->
 
                 <h4 style="margin-top: 2rem;">一、研究內容說明</h4>
-                
+
                 <h5>1. 研究動機</h5>
                 <p>生成式 AI 對話工具（ChatGPT、Claude、Gemini）因「有求必應」的互動特性大幅降低使用者取得資訊、完成任務的時間與心力成本。這種高便利性提升了效率，卻也逐漸引發學界對「AI 依賴」與「問題性 AI 使用」的關注。國際研究已開始累積實證基礎——CHI 2026 的質性研究提出「AI 精靈現象」（使用者只需付出極小努力即可精準獲得任何想要的結果，是驅動依賴的核心機制），2026 年的回顧性文獻也系統整理出 AICD、PUCAI-6、GAA-3 等測量依賴傾向的量表工具。但國內針對此現象的量化實證資料仍相當有限，尤其鮮少有研究進一步檢驗「便利性認知」如何透過「使用頻率」的中介效果導致「依賴傾向」的形成路徑，更遑論探討此依賴是否會弱化使用者的自主查證與批判性判斷。</p>
                 <p>研究者本身具備醫務管理學系背景，長期關注醫療產業之數位轉型議題，並觀察到醫療從業人員工作步調快、決策壓力大，對 AI 工具的便利性可能有更顯著的吸引力與更高的依賴風險——這也是本研究將「職業別」納入分析、特別關注醫療相關工作者的動機來源。</p>
-                
+
                 <h5>2. 理論基礎</h5>
                 <ul>
-                    <li><strong>科技接受模式（TAM， Davis， 1989）：</strong>核心構念「認知易用性」（Perceived Ease of Use）與本研究「便利性認知」高度呼應，但本研究進一步追問:當易用性被推向「幾乎不需付出任何努力」的極致，是否反而弱化使用者自主查證與獨立思考的動機——這是既有 TAM 理論尚未充分回答的問題，也是本研究的核心切入點。</li>
-                    <li><strong>AI 精靈現象（AI Genie Phenomenon， Shen et al.， 2026）：</strong>質性研究歸納出三種成癮性 AI 使用類型（逃避式角色扮演、擬社交陪伴、認知兔洞），其中「認知兔洞」──使用者持續且強迫性地向 AI 提出開放式問題，並將此行為自我合理化為具生產力的探索──與本研究主題最相關，其核心誘因為「資訊尋求」，高好奇心者為高風險族群。</li>
-                    <li><strong>依賴量表發展脈絡：</strong>AICD 量表（Zhang et al.， 2025）率先以 8 題項量化情感與行為層面的依賴;其後的 PUCAI-6、GAA-3 進一步借用行為成癮理論（顯著性、失控感、耐受性、戒斷不適等）操作化，為本研究自編問卷的構念劃分提供理論基礎。</li>
+                    <li><strong>科技接受模式（TAM, Davis, 1989）：</strong>核心構念「認知易用性」（Perceived Ease of Use）與本研究「便利性認知」高度呼應，但本研究進一步追問:當易用性被推向「幾乎不需付出任何努力」的極致，是否反而弱化使用者自主查證與獨立思考的動機——這是既有 TAM 理論尚未充分回答的問題，也是本研究的核心切入點。</li>
+                    <li><strong>AI 精靈現象（AI Genie Phenomenon, Shen et al., 2026）：</strong>質性研究歸納出三種成癮性 AI 使用類型（逃避式角色扮演、擬社交陪伴、認知兔洞），其中「認知兔洞」──使用者持續且強迫性地向 AI 提出開放式問題，並將此行為自我合理化為具生產力的探索──與本研究主題最相關，其核心誘因為「資訊尋求」，高好奇心者為高風險族群。</li>
+                    <li><strong>依賴量表發展脈絡：</strong>AICD 量表（Zhang et al., 2025）率先以 8 題項量化情感與行為層面的依賴;其後的 PUCAI-6、GAA-3 進一步借用行為成癮理論（顯著性、失控感、耐受性、戒斷不適等）操作化，為本研究自編問卷的構念劃分提供理論基礎。</li>
                 </ul>
 
                 <h5>3. 研究問題與假設</h5>
@@ -959,7 +994,7 @@
                     </tbody>
                 </table>
                 <p>研究架構以「便利性認知」為自變項，「使用頻率」為中介變項，「依賴傾向」為核心依變項，並延伸檢驗依賴傾向與「拖延/專注力下降」「認知卸載」兩項結果變項的關聯;「職業別」則作為分組比較變項。</p>
-                
+
                 <h5>4. 研究方法</h5>
                 <ul>
                     <li><strong>抽樣：</strong>以目前有使用 AI 對話工具之成人為母體，採便利抽樣與滾雪球抽樣，透過社群平台與人際網絡發放線上問卷，回收有效問卷 55 份（非隨機抽樣，結果不宜推論至母體）。</li>
@@ -969,7 +1004,7 @@
                 </ul>
 
                 <h5>5. 研究結果摘要</h5>
-                <p><strong>樣本特性：</strong>n = 55，年齡 18–52 歲（M = 31.2， SD = 5.9），以 27–34 歲青壯年為主;女性 74.5%、男性 21.8%、不透露 3.6%;職業重新歸類為醫療相關工作（n=13）、資訊/科技業（n=10）、其他（n=26，含設計、金融、行政、製造、服務業等）；87% 以上填答者每日手機使用超過 3 小時，最常使用之生成式 AI 工具以 ChatGPT 占絕大多數。</p>
+                <p><strong>樣本特性：</strong>n = 55，年齡 18–52 歲（M = 31.2, SD = 5.9），以 27–34 歲青壯年為主;女性 74.5%、男性 21.8%、不透露 3.6%;職業重新歸類為醫療相關工作（n=13）、資訊/科技業（n=10）、其他（n=26，含設計、金融、行政、製造、服務業等）；87% 以上填答者每日手機使用超過 3 小時，最常使用之生成式 AI 工具以 ChatGPT 占絕大多數。</p>
                 <p><strong>信度：</strong>五大構念之 Cronbach's α 均高於 0.7 學術門檻（便利性認知 .809、使用頻率 .863、依賴傾向 .875、拖延專注力 .907、認知卸載 .741），顯示自編問卷具良好內部一致性。</p>
                 <p><strong>假設檢驗結果（五項假設皆獲支持）：</strong></p>
                 <table class="info-table">
@@ -1020,7 +1055,7 @@
                             <td>H5</td>
                             <td>職業別 → 依賴傾向</td>
                             <td>One-way ANOVA</td>
-                            <td>F(3，51)=3.045</td>
+                            <td>F(3, 51)=3.045</td>
                             <td>.037*</td>
                             <td>成立（醫療相關工作者分數最高，M=2.49）</td>
                         </tr>
@@ -1031,8 +1066,8 @@
                 <hr class="section-divider">
 
                 <h4>二、研究方法嚴謹度與倫理評估</h4>
-                
-               <h5>需留意的風險與改善方向</h5>
+
+                <h5>需留意的風險與改善方向</h5>
                 <table class="info-table">
                     <thead>
                         <tr>
@@ -1087,7 +1122,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- 專案 4：AIRIC 費用管理系統 -->
     <div id="modal-4" class="modal">
         <div class="modal-content">
@@ -1106,37 +1141,35 @@
                     <p><a href="https://hsusy27.github.io/money/" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此前往體驗 AIRIC 費用管理系統</a></p>
                 </div>
 
-                <!-- 加回來的圖片展示區塊 -->
+                <!-- 圖片展示區塊 -->
                 <div class="media-container" style="margin-top: 2rem;">
                     <h4>📸 介面展示</h4>
-                       <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(220px， 1fr)); gap: 1rem; margin-top: 1rem;">
-        
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
                         <!-- 圖 1 -->
-                       <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                       <img src="assets/img/money1.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：總表畫面" style="width: 100%; height: 100%; object-fit: cover;">
-                       </div>
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/money1.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：總表畫面" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
 
-                       <!-- 圖 2：待補 — 把金流快照報表截圖存成英文檔名（例如 money2.png）上傳到 assets/img/，
-                            再把下面這行 src 換成正確檔名，並拿掉外層的註解符號即可顯示 -->
-                       <!--
-                       <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                       <img src="assets/img/money2.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：應收應付金流快照報表" style="width: 100%; height: 100%; object-fit: cover;">
-                       </div>
-                       -->
+                        <!-- 圖 2：待補 — 把金流快照報表截圖存成英文檔名（例如 money2.png）上傳到 assets/img/，
+                             再把下面這行 src 換成正確檔名，並拿掉外層的註解符號即可顯示 -->
+                        <!--
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/money2.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：應收應付金流快照報表" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        -->
+                    </div>
+                </div>
+                <!-- 圖片區塊結束 -->
 
-                         </div>
-                              </div>
-                     <!-- 圖片區塊結束 -->
-                
                 <h4 style="margin-top: 2rem;">一、系統功能說明</h4>
-                
+
                 <h5>1. 系統定位</h5>
                 <p>本系統專為研究中心主任辦公室量身打造。中心主管常因業務需求，在多個不同計畫（如院內經費、國科會計畫、產學合作）之間產生支出，且多由主管先行墊付，事後再向各單位核銷。傳統 Excel 記帳極難處理「跨月沖帳」、「部分核銷」及「歷年呆帳追蹤」的問題。此系統透過在前端實作經費來源、墊付人與單據之間的對應關係，將此流程系統化與自動化，大幅減少行政人員核對帳目的心力。</p>
 
                 <h5>2. 核心功能</h5>
                 <ul>
                     <li><strong>多維度經費與墊付管理：</strong>支援設定多個經費來源與不同墊付帳戶，每一筆支出均綁定「來源」與「墊付人」，確保金流軌跡清晰可查。</li>
-                    <li><strong>跨月沖帳與對帳單系統：</strong>支出單據可隨時標記為「未核銷」、「審核中」、「已撥款」等狀態，系統會自動結算當月與歷年的應收、應付金額，自動結算當月與歷年的應收、應付金額，減少手動計算出錯。</li>
+                    <li><strong>跨月沖帳與對帳單系統：</strong>支出單據可隨時標記為「未核銷」、「審核中」、「已撥款」等狀態，系統會自動結算當月與歷年的應收、應付金額，減少手動計算出錯。</li>
                     <li><strong>金流快照儀表板：</strong>即時將枯燥的帳務數據轉化為視覺化圖表，讓主管一眼看出各項計畫的剩餘額度與墊付水位。</li>
                     <li><strong>漸進式雲端同步：</strong>預設採離線單機模式，帳務資料儲存在本機；有跨裝置或協作需求時，再開啟 Firebase 模組進行雲端同步。</li>
                 </ul>
@@ -1176,7 +1209,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- 專案 5：新進同仁教育訓練導覽網站 -->
     <div id="modal-5" class="modal">
         <div class="modal-content">
@@ -1189,38 +1222,35 @@
                 <p>純靜態的新人導覽入口網，以「資料與程式分離 + 客戶端 AES-256-GCM 加密」設計，讓非工程背景的行政同仁也能自行維護內容，同時避免內部通訊資料直接公開在網路上。</p>
             </div>
             <div class="modal-body">
-             <!-- 系統連結 -->
+                <!-- 系統連結 -->
                 <div class="media-container">
                     <h4>🔗 系統連結</h4>
                     <p><a href="https://hsusy27.github.io/airic/" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此前往體驗新進同仁教育訓練導覽網站</a></p>
                 </div>
-            <!-- 加回來的圖片展示區塊 -->
+                <!-- 圖片展示區塊 -->
                 <div class="media-container">
                     <h4>📸 介面展示</h4>
-                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(220px， 1fr)); gap: 1rem; margin-top: 1rem;">
-                        
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
                         <!-- 圖 1 -->
                         <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
                             <img src="assets/img/newpeople1.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 1：教育訓練網封面" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-
                         <!-- 圖 2 -->
                         <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
                             <img src="assets/img/newpeople2.png" class="zoomable-img" onclick="openLightbox(this)" alt="圖 2：動態座位圖與分機搜尋面板" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-
                     </div>
                 </div>
                 <!-- 圖片區塊結束 -->
 
                 <h4 style="margin-top: 2rem;">一、系統功能說明</h4>
-                
+
                 <h5>1. 系統定位</h5>
                 <p>這是給研究中心新進同仁報到第一週使用的單一入口網。傳統做法是行政單位把座位表、報到待辦、空間使用規範、常用系統網址分散在 PowerPoint、紙本、E-mail 與口頭交代裡，新人要問好幾個人才拼得出全貌，行政同仁也要重複回答同樣的問題。這個網站把這些散落的資訊收斂成一頁式導覽，新人自己看就能完成報到流程，行政只需要在人員異動時改一個資料檔。</p>
                 <p>設計上刻意不做後端、不做資料庫：使用單位沒有維運人力，任何需要「架伺服器」的方案在這個場域都活不下來。</p>
-                
+
                 <h5>2. 核心功能（依頁面區塊）</h5>
-                
+
                 <p><strong>密碼閘門（gate）</strong></p>
                 <ul>
                     <li>進站需輸入共用密碼，通過後才會解密並渲染內容。</li>
@@ -1256,17 +1286,16 @@
                     <li>獨立的離線工具頁：貼上／載入明文資料 → 輸入密碼 → 產生 data.enc.js 供上傳。</li>
                     <li>維護流程被刻意設計成「編輯明文 → 重新加密 → 只上傳密文」，明文檔由 .gitignore 擋住，避免誤推到公開 repo。</li>
                 </ul>
-                
+
                 <h5>3. 技術架構</h5>
                 <ul>
                     <li><strong>資料與呈現分離：</strong>全站文案、人員、規範、連結集中在單一 data.js，app.js 只負責渲染邏輯。維護者九成的工作只需要改 data.js，不必碰程式碼 —— 這是讓「非工程背景的行政同仁能接手維護」的關鍵設計。</li>
                 </ul>
 
-
                 <hr class="section-divider">
 
                 <h4>二、資安評估</h4>
-                
+
                 <h5></h5>
                 <table class="info-table">
                     <thead>
@@ -1296,13 +1325,12 @@
                             <td>勾選進度不上傳</td>
                             <td>待辦完成狀態留在使用者本機，系統本身不蒐集任何行為資料、無追蹤碼、無 cookie。</td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    
+
     <!-- 專案 6：個人工作待辦與日誌匯出系統 -->
     <div id="modal-6" class="modal">
         <div class="modal-content">
@@ -1321,28 +1349,26 @@
                     <p><a href="https://hsusy27.github.io/Yuan-todo/" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此前往體驗 個人工作待辦與日誌匯出系統</a></p>
                 </div>
 
-                <!-- 加回來的圖片展示區塊 -->
+                <!-- 圖片展示區塊 -->
                 <div class="media-container" style="margin-top: 2rem;">
-                <h4>📸 介面展示</h4>
-                <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(220px， 1fr)); gap: 1rem; margin-top: 1rem;">
-        
-               <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-              <img src="assets/img/todo1.png" class="zoomable-img" onclick="openLightbox(this)" alt="個人工作待辦與日誌匯出系統介面" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-               </div>
-        
-               </div>
-                 </div>
+                    <h4>📸 介面展示</h4>
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/todo1.png" class="zoomable-img" onclick="openLightbox(this)" alt="個人工作待辦與日誌匯出系統介面" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        </div>
+                    </div>
+                </div>
                 <!-- 圖片區塊結束 -->
 
                 <h4 style="margin-top: 2rem;">一、系統功能說明</h4>
-                
+
                 <h5>1. 開發背景與定位</h5>
                 <p>為解決過去使用 Notion 或 Excel 記錄工作時，每週／每月仍需花費大量時間手動重新排版、整理進度報告的繁瑣流程。本系統的核心理念是「讓日常待辦等同於工作日誌」，使用者只需專注於每日的任務推進，系統會在需要時，一鍵將其轉化為格式專業的彙報文件，大幅節省行政內耗。</p>
 
                 <h5>2. 核心功能</h5>
                 <ul>
                     <li><strong>直覺式任務管理看板：</strong>採用清晰的狀態分類（待辦、進行中、已完成、卡關），支援任務的快速建立、編輯與狀態流轉，隨時掌握專案脈動。</li>
-                    <li><strong>動態時間區間篩選：</strong>可一鍵過濾出「本週」、「本月」或「自訂區間」內活躍或完成的任務，可依本週、本月或自訂區間篩選任務，直接取得彙報期間的工作項目，不需要再手動整理。</li>
+                    <li><strong>動態時間區間篩選：</strong>可一鍵過濾出「本週」、「本月」或「自訂區間」內活躍或完成的任務，直接取得彙報期間的工作項目，不需要再手動整理。</li>
                     <li><strong>工作日誌 PDF 自動排版：</strong>內建專屬的列印樣式優化，點擊匯出即可將篩選後的任務清單轉化為乾淨、專業的 PDF 報告，直接做為附件發送或供 AI 輔助生成簡報草稿。</li>
                     <li><strong>隱私密碼鎖定：</strong>進入系統前需輸入自訂密碼解鎖，有效保護未公開的專案進度與個人工作軌跡。</li>
                 </ul>
@@ -1373,7 +1399,6 @@
                             <td>列印層樣式隔離</td>
                             <td>以 CSS @media print 區分網頁介面與列印樣式，匯出 PDF 時自動隱藏按鈕與選單，只保留報表內容。</td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -1392,25 +1417,22 @@
                 <p>將會議錄音自動轉換為逐字稿、結構化會議記錄與待辦事項，已在本機實際處理過真實工作會議錄音並產出可用結果。</p>
             </div>
             <div class="modal-body">
-            <!-- 系統連結 -->
+                <!-- 系統連結 -->
                 <div class="media-container">
                     <h4>🔗相關連結</h4>
-                    <p>GitHub<a href="https://github.com/hsusy27/meetinggo" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此查看 GitHub Repository</a></p>
-                </div>             
-            <!-- 加回來的圖片展示區塊 -->
+                    <p>GitHub：<a href="https://github.com/hsusy27/meetinggo" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此查看 GitHub Repository</a></p>
+                </div>
+                <!-- 圖片展示區塊 -->
                 <div class="media-container">
                     <h4>架構流程圖</h4>
-                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(220px， 1fr)); gap: 1rem; margin-top: 1rem;">
-                        
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
                         <!-- 圖 1 -->
                         <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
                             <img src="assets/img/meeting_notes_pipeline_blue.png" class="zoomable-img" onclick="openLightbox(this)" alt="架構流程圖" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-
-                        
                     </div>
                 </div>
-                <!-- 圖片區塊結束 -->                
+                <!-- 圖片區塊結束 -->
 
                 <h4>一、專案概述</h4>
                 <p>一個將會議錄音自動轉換為逐字稿、結構化會議記錄與待辦事項的工具。使用者上傳錄音檔，程式自動切段並交由 Gemini API 轉錄，再整理成含主題分類、重點、細節的巢狀會議記錄，並萃取待辦事項（負責人、任務、期限）。</p>
@@ -1425,7 +1447,6 @@
     ↓ 合併逐字稿
     ↓ Gemini API 整理（結構化提示詞）
 會議記錄（主題／重點／細節）＋ 待辦事項（負責人／任務／期限）</div>
-
 
                 <h4>四、關鍵設計決策</h4>
 
@@ -1470,7 +1491,7 @@
         </div>
     </div>
 
- <!-- 專案 8：BI 數據分析作品：台灣連鎖咖啡品牌分析 -->
+    <!-- 專案 8：BI 數據分析作品：台灣連鎖咖啡品牌分析 -->
     <div id="modal-8" class="modal">
         <div class="modal-content">
             <button class="expand-btn" onclick="toggleExpand(this)" title="點擊放大/還原視窗">
@@ -1483,20 +1504,17 @@
             </div>
             <div class="modal-body">
 
-            <!-- 加回來的圖片展示區塊 -->
+                <!-- 圖片展示區塊 -->
                 <div class="media-container">
                     <h4>📸 BI展示</h4>
-                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(220px， 1fr)); gap: 1rem; margin-top: 1rem;">
-                        
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
                         <!-- 圖 1 -->
                         <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
                             <img src="assets/img/bitaiwan.png" class="zoomable-img" onclick="openLightbox(this)" alt="全台門市分佈" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-
-                        
                     </div>
                 </div>
-                <!-- 圖片區塊結束 -->                  
+                <!-- 圖片區塊結束 -->
                 <div class="media-container">
                     <h4>🔗 系統連結</h4>
                     <p>互動儀表板（Tableau Public）：<a href="https://public.tableau.com/app/profile/shihyuan.hsu/viz/_17911135071140/1" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此查看互動儀表板</a></p>
@@ -1523,7 +1541,6 @@
                     <li><strong>資料分散、店數不透明：</strong>品牌不公開完整門市資料，串接四種公開資料，建立可比較的門市與人口指標。</li>
                     <li><strong>店多不等於密度高：</strong>只看門市數，臺北市一定最多；換算每萬人門市數後，才看得出品牌跟著商辦人潮走。</li>
                     <li><strong>推噓不等於口碑：</strong>驗證發現 PTT 推噓代表「是否同意發文者」，改以留言內容判斷對品牌的態度，並把促銷文與體驗文分開計算。</li>
-
                 </ul>
 
                 <hr class="section-divider">
@@ -1568,7 +1585,6 @@
                         </tr>
                     </tbody>
                 </table>
-
 
                 <h5>資料管線</h5>
                 <table class="info-table">
@@ -1665,6 +1681,7 @@
                         <tr>
                             <td>第三方套件漏洞（供應鏈）</td>
                             <td>只使用 5 個主流開源套件，安裝在獨立虛擬環境 .venv</td>
+                            <td>以 requirements.txt 鎖定套件版本</td>
                         </tr>
                         <tr>
                             <td>外部輸入的解析風險</td>
@@ -1678,7 +1695,7 @@
                         </tr>
                         <tr>
                             <td>資料來源可信度</td>
-                            <td>使用政府與 OpenStreetMap 官方來源；以人口總數 2，263 萬交叉檢查串接結果</td>
+                            <td>使用政府與 OpenStreetMap 官方來源；以人口總數 2,263 萬交叉檢查串接結果</td>
                             <td>記錄每份原始檔的下載日期與 SHA-256 雜湊值，確保可追溯</td>
                         </tr>
                         <tr>
@@ -1696,9 +1713,9 @@
 
             </div>
         </div>
-    </div>   
+    </div>
 
-   <!-- 專案 9：大學畢業專題：提升門診雲端藥歷查詢率 -->
+    <!-- 專案 9：大學畢業專題：提升門診雲端藥歷查詢率 -->
     <div id="modal-9" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-9')"><i class="fa-solid fa-xmark"></i></span>
@@ -1707,17 +1724,16 @@
                 <p>運用 4M 分析法探討雲端藥歷系統導入瓶頸，確立以「使用者體驗」為核心的系統思維。</p>
             </div>
             <div class="modal-body">
-                <!-- 加回來的圖片展示區塊 -->
-            <div class="media-container">
-              <h4>畢業專題</h4>
-                 <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit， minmax(220px， 1fr)); gap: 1rem; margin-top: 1rem;">
-        
-                 <!-- 圖 1 -->
-                 <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
-                   <img src="assets/img/i14661108.png" class="zoomable-img" onclick="openLightbox(this)" alt="專題內容" style="width: 100%; height: 100%; object-fit: cover;">
-                      </div>
-                 </div>
-            </div>
+                <!-- 圖片展示區塊 -->
+                <div class="media-container">
+                    <h4>畢業專題</h4>
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <!-- 圖 1 -->
+                        <div class="gallery-item" style="height: 160px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden;">
+                            <img src="assets/img/i14661108.png" class="zoomable-img" onclick="openLightbox(this)" alt="專題內容" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
 
                 <h4>一、專題概述</h4>
                 <p>就讀長榮大學醫務管理學系期間的畢業專題，針對門診雲端藥歷系統使用率偏低的現象，以 4M 分析法拆解可能的導入瓶頸，並從中歸納出提升查詢率的改善方向。</p>
@@ -1731,8 +1747,8 @@
             </div>
         </div>
     </div>
-    
-    <!-- 專案 10：SQL 查詢手帖 -->   
+
+    <!-- 專案 10：SQL 查詢手帖 -->
     <div id="modal-10" class="modal">
         <div class="modal-content">
             <button class="expand-btn" onclick="toggleExpand(this)" title="點擊放大/還原視窗">
@@ -1749,12 +1765,12 @@
                     <h4>🔗相關連結</h4>
                     <p>互動網站：<a href="https://hsusy27.github.io/sql-handbook/" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此前往體驗SQL 查詢手帖</a></p>
                     <p>GitHub：<a href="https://github.com/hsusy27/sql-handbook" target="_blank" style="color: var(--primary-light); text-decoration: underline; font-weight: 500;">點此查看 GitHub Repository</a></p>
-                </div>                
+                </div>
                 <!-- 影片展示區塊 -->
                 <div class="media-container">
                     <h4>🎬 操作示範影片</h4>
                     <div class="video-wrapper">
-                        <video controls width="100%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0，0，0，0.1);">
+                        <video controls width="100%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
                             <source src="assets/video/sqlhandbook.mp4" type="video/mp4">
                             您的瀏覽器不支援影片播放標籤，建議使用 Chrome 或 Edge。
                         </video>
@@ -1765,9 +1781,9 @@
                 <!-- 照片展示區塊 -->
                 <div class="media-container" style="margin-top: 2rem;">
                     <h4>🖼️ 介面展示</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit， minmax(280px， 1fr)); gap: 1rem;">
-                        <img src="assets/img/sqlhand01.jpg" class="zoomable-img" onclick="openLightbox(this)" alt="首頁：章節卡與「新手村訓練」下拉選單" loading="lazy" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0，0，0，0.1);">
-                        <img src="assets/img/sqlhand02.jpg" class="zoomable-img" onclick="openLightbox(this)" alt="闖關練習：自動批改與 STAGE CLEAR" loading="lazy" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0，0，0，0.1);">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        <img src="assets/img/sqlhand01.jpg" class="zoomable-img" onclick="openLightbox(this)" alt="首頁：章節卡與「新手村訓練」下拉選單" loading="lazy" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                        <img src="assets/img/sqlhand02.jpg" class="zoomable-img" onclick="openLightbox(this)" alt="闖關練習：自動批改與 STAGE CLEAR" loading="lazy" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
                     </div>
                 </div>
                 <!-- 照片區塊結束 -->
@@ -1788,26 +1804,26 @@
         </div>
     </div>
 
-<!-- 圖片點擊放大專用 Lightbox (新增區塊) -->
+    <!-- 圖片點擊放大專用 Lightbox -->
     <div id="image-lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
-        <img id="lightbox-img" class="lightbox-content" src="">
+        <img id="lightbox-img" class="lightbox-content" src="" alt="放大圖片">
     </div>
 
     <!-- 核心 JS 邏輯 -->
     <script src="assets/js/main.js"></script>
-    
-    <!-- Lightbox 控制腳本 (新增區塊) -->
+
+    <!-- Lightbox 控制腳本 -->
     <script>
         function openLightbox(imgElement) {
             // 阻止事件冒泡，以免觸發外層的點擊事件
-            if(event) event.stopPropagation(); 
-            
+            if (window.event) window.event.stopPropagation();
+
             const lightbox = document.getElementById('image-lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
-            
+
             // 將 Lightbox 的圖片來源設為被點擊的圖片來源
-            lightboxImg.src = imgElement.src; 
+            lightboxImg.src = imgElement.src;
             lightbox.classList.add('show');
         }
 
@@ -1817,20 +1833,20 @@
             // 清空來源避免下次打開時殘留畫面
             setTimeout(() => {
                 document.getElementById('lightbox-img').src = "";
-            }， 300);
+            }, 300);
         }
     </script>
 
     <!-- 彈窗跑版修正：自動幫每個彈窗加上「表格捲動容器」與「最下方關閉鈕」 -->
     <script>
-        document.addEventListener('DOMContentLoaded'， function () {
+        document.addEventListener('DOMContentLoaded', function () {
 
             // 1. 把每個 .info-table 包進可左右捲動的容器
             document.querySelectorAll('.modal-body table').forEach(function (table) {
                 if (table.parentElement.classList.contains('table-scroll')) return;
                 var wrapper = document.createElement('div');
                 wrapper.className = 'table-scroll';
-                table.parentNode.insertBefore(wrapper， table);
+                table.parentNode.insertBefore(wrapper, table);
                 wrapper.appendChild(table);
             });
 
@@ -1845,7 +1861,7 @@
                 btn.type = 'button';
                 btn.className = 'close-btn-bottom';
                 btn.innerHTML = '<i class="fa-solid fa-xmark"></i> 關閉';
-                btn.addEventListener('click'， function () {
+                btn.addEventListener('click', function () {
                     closeModal(modalEl.id);
                 });
                 content.appendChild(btn);
